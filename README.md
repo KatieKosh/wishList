@@ -19,4 +19,5 @@
     * Search an Item 
 5. Re-Retrieve, Process Information
     * Sending lists? Update new best prices.
+    * https://nodemailer.com/about/
     * Return to client list and info
