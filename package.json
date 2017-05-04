@@ -4,6 +4,7 @@
   "description": "whish list",
   "main": "server.js",
   "dependencies": {
+    "path": "^0.12.7",
     "sequelize": "^3.30.4"
   },
   "devDependencies": {},
