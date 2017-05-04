@@ -4,36 +4,44 @@ CREATE DATABASE WishListApp;
 USE WishListApp;
 
 CREATE TABLE User (
-    userId INT NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (userId)
+    id INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (id)
     -- User attributes
 );
 
 CREATE TABLE Item (
-    itemId INT NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (itemId)
+    id INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (id),
     -- Item Attributes
+    name VARCHAR(255) NOT NULL,
+    best_price INT NOT NULL,
+    source_url VARCHAR(255) NOT NULL,
+    source_name VARCHAR(255) NOT NULL,
+    img_url VARCHAR(255)
 );
 
 CREATE TABLE Contact (
-    contactId INT NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (contactId)
+    id INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (id),
     -- Contact Attributes
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL -- Include validations
 );
 
 CREATE TABLE WishList (
-    wishListId INT NOT NULL AUTO_INCREMENT,
+    id INT NOT NULL AUTO_INCREMENT,
     userId INT NOT NULL,
-    PRIMARY KEY (wishListId),
-    FOREIGN KEY (userId) REFERENCES User(userId)
+    PRIMARY KEY (id),
+    FOREIGN KEY (userId) REFERENCES User(id),
     -- WishList Attributes
+    name VARCHAR(255) DEFAULT "Wishlist"
 );
 
 CREATE TABLE ContactList (
-    contactListId INT NOT NULL AUTO_INCREMENT,
+    id INT NOT NULL AUTO_INCREMENT,
     userId INT NOT NULL,
-    PRIMARY KEY(contactListId),
-    FOREIGN KEY (userId) REFERENCES User(userId)
+    PRIMARY KEY(id),
+    FOREIGN KEY (userId) REFERENCES User(id)
     -- Contact List Attributes
 );
 
