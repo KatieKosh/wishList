@@ -1,0 +1,30 @@
+-- Proposed Schema
+
+CREATE DATABASE WishListApp;
+USE WishListApp;
+
+CREATE TABLE User (
+    id INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY(id),
+);
+
+CREATE TABLE Item (
+    id INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY(id),
+);
+
+CREATE TABLE Contack (
+    id INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY(id),
+);
+
+CREATE TABLE User (
+    id INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY(id),
+);
+
+CREATE TABLE User (
+    id INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY(id),
+);
+
