@@ -1,0 +1,140 @@
+button.submit {
+  float: right;
+}
+
+form#cms {
+  margin-top: 50px;
+}
+
+#cms textarea {
+  resize: none;
+}
+
+header {
+border-top: 10px solid black;
+
+}
+
+.panel-heading button.delete,
+button.edit {
+  float: right;
+  margin: 5px;
+}
+
+.top-30 {
+  margin-top: 30px;
+}
+
+
+body {
+
+/*margin: auto;*/
+background-image: url("wishList.jpg");
+background-size: cover;
+height: 1300px;
+
+}
+
+h1 {
+font-family: 'Homemade Apple', cursive;
+padding-top: 20px;
+text-align: center;
+font-size: 125px;
+/*border-top: 5px solid white;*/
+margin-top: 100px;
+color: white;
+border-bottom: 2px solid white;
+
+}
+
+h2 {
+font-size: 45px;
+font-family: 'Homemade Apple', cursive;
+margin-top: 100px;
+text-align: center;
+color: white;
+padding-bottom: 100px;
+}
+
+img {
+height: 475px;
+
+margin-top: 100px;
+margin-bottom: 100px;
+/*margin-left: 30px;*/
+width: 375px;
+
+outline: 20px solid black;
+}
+
+.btn {
+/*width: 75%;*/
+ font-family: 'Homemade Apple', cursive;
+font-size: 30px;
+/*border-width: 30px;*/
+border-radius: 15px;
+margin-left: 130px;
+text-align: center;
+background-color: black;
+
+}
+
+
+
+.form-group {
+padding-top: 300px;
+padding-left: 300px;
+/*padding-left: 300px;*/
+}
+
+.btn btn-default {
+font-size: 50px;
+/*padding: 200px;*/
+ font-family: 'Homemade Apple', cursive;
+text-align: center;
+
+}
+
+.form-control {
+margin-left: 370px;
+
+}
+
+/*#amazon {
+height: 50px;
+width: 50px;
+
+}*/
+
+
+img {
+height: 300px;
+
+}
+
+.modal-title {
+font-size: 40px;
+font-family: 'Love Ya Like A Sister', cursive;
+}
+
+
+
+#myModal {
+font-size: 30px;
+background-image: url("wishList.jpg") !important;
+background-size: cover;
+font-family: 'Love Ya Like A Sister', cursive;
+
+}
+
+
+
+.btn1 {
+font-size: 25px;
+
+}
+
+.modal-footer {
+height: 100px;
+
+}
