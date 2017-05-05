@@ -33,11 +33,16 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {}
             // Insert Validation
-        }   
+        }
     },
-    {
-        // ASSOCIATIONS
-    }); // END COLUMNS DEFINE
+        {
+            // ASSOCIATIONS
+            classMethods: {
+                associate: function (models) {
+                    Item.belongsToMany(Wishlist, { through: "ItemsInWishlists" });
+                }
+            }
+        }); // END COLUMNS DEFINE
     // END TABLE DEFINE
     return Item;
 };
