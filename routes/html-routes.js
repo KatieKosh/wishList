@@ -18,13 +18,17 @@ module.exports = function(app) {
 	app.get('/callback',
       passport.authenticate('auth0', { failureRedirect: '/' }),
       function(req, res) {
-        res.redirect(req.session.returnTo || '/cms');
+        res.redirect(req.session.returnTo || '/');
     });
 
+    // app.get('/callback', function(req, res) {
+    //     res.sendFile(path.join(__dirname, "../public/index.html"));
+    // });
+
     app.get('/login',function(req, res){
-  // Same thing for the login page.
-  res.render('login', { env: env });
-});
+        // Same thing for the login page.
+        res.render('login', { env: env });
+    });
 
     // index route loades index.html
     app.get("/", function(req, res) {
