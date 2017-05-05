@@ -34,6 +34,10 @@ module.exports = function (sequelize, DataTypes) {
             validate: {}
             // Insert Validation
         }   
-    }); // END COLUMNS DEFINE; INSERT ASSOCIATIONS HERE
+    },
+    {
+        // ASSOCIATIONS
+    }); // END COLUMNS DEFINE
     // END TABLE DEFINE
+    return Item;
 };

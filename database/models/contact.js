@@ -15,7 +15,11 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {}
             // Insert Validation
-        }   
-    }); // END COLUMNS DEFINE; INSERT ASSOCIATIONS HERE
+        }
+    },
+        {
+            // Associations
+        }); // END COLUMNS DEFINE
     // END TABLE DEFINE
+    return Contact;
 };
