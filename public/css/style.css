@@ -29,7 +29,7 @@ button.edit {
 body {
 
 /*margin: auto;*/
-background-image: url("wishList.jpg");
+background-image: url("../image/wishList.jpg");
 background-size: cover;
 height: 1300px;
 
@@ -121,7 +121,7 @@ font-family: 'Love Ya Like A Sister', cursive;
 
 #myModal {
 font-size: 30px;
-background-image: url("wishList.jpg") !important;
+background-image: url("../image/wishList.jpg") !important;
 background-size: cover;
 font-family: 'Love Ya Like A Sister', cursive;
 
@@ -137,4 +137,40 @@ font-size: 25px;
 .modal-footer {
 height: 100px;
 
+}
+
+
+
+/*SHRINK*/
+.shrink img {
+  height: 400px;
+  width: 400px;
+
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+
+.shrink img:hover {
+  width: 300px;
+  height: 300px;
+}
+
+/*SHRINK*/
+.shrink img {
+  height: 350px;
+  width: 350px;
+
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+
+.shrink img:hover {
+  width: 200px;
+  height: 200px;
 }

@@ -9,48 +9,41 @@
 	<!-- <link rel="stylesheet" href="css/styles.css" media="screen" title="no title"> -->
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
 
-<style>
+	<style>
+		body {
+			height: auto;
+			background-image: url("wishList.jpg");
+			background-size: cover;
+			margin-top: 100px;
+			font-family: 'Homemade Apple', cursive;
+			color: white;
+		}
 
-body {
-	height: auto;
-background-image:
-	url("wishList.jpg");
-background-size: cover;
-margin-top: 100px;
- font-family: 'Homemade Apple', cursive;
- color: white;
-}
+		h1 {
+			font-family: 'Homemade Apple', cursive;
+			text-align: center;
+			font-size: 60px;
+		}
 
-h1 {
- font-family: 'Homemade Apple', cursive;
-	text-align: center;
-	font-size: 60px;
-}
+		h2 {
+			font-family: 'Homemade Apple', cursive;
+			text-align: center;
+		}
 
-h2 {
- font-family: 'Homemade Apple', cursive;
- text-align: center;
-}
+		.btn-default {
+			color: #ffffff;
+			border-color: black;
+			background-color: black;
+		}
 
-.btn-default {
-    color: #ffffff;
-  	border-color: black;
-		background-color: black;
-}
-
-
-.btn-success {
-    color: #ffffff;
-    background-color: black;
-		border-color: black;
-}
-
-
-
-
-</style>
+		.btn-success {
+			color: #ffffff;
+			background-color: black;
+			border-color: black;
+		}
+	</style>
 
 
 
@@ -61,13 +54,13 @@ h2 {
 <body>
 	<div class="container">
 		<h1>What's on Your Wish List?</h1>
-  <h2>Just Whisper...We're Listening</h2>
+		<h2>Just Whisper...We're Listening</h2>
 		<div class="row">
 			<div class="row">
-      <div class="col-md-2 col-sm-2 top-30">
-        <a class="btn btn-default" href="/blog">Go to List</a>
-      </div>
-    </div>
+				<div class="col-md-2 col-sm-2 top-30">
+					<a class="btn btn-default" href="/blog">Go to List</a>
+				</div>
+			</div>
 			<div class="col-md-6 col-md-offset-3">
 				<form id="cms">
 					<div class="form-group">
@@ -85,8 +78,8 @@ h2 {
 								 <option value="Political">Celebration!</option>
 
   						</select>
-						<button type="submit" class="btn btn-success submit">Submit</button>
-					</div>
+							<button type="submit" class="btn btn-success submit">Submit</button>
+						</div>
 					</div>
 				</form>
 			</div>
