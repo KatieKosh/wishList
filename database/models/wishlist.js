@@ -10,7 +10,13 @@ module.exports = function (sequelize, DataTypes) {
         }
     },
         {
-            // INSERT HERE ASSOCIATIONS
+            // ASSOCIATIONS
+            classMethods: {
+                // Joining
+                associate: function (models) {
+                    Wishlist.belongsToMany(Item, { through: "ItemsInWishlists" });
+                }
+            }
         }
     );
 
