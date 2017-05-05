@@ -1,7 +1,9 @@
 -- Proposed Schema
 
-CREATE DATABASE WishListApp;
-USE WishListApp;
+-- CREATE DATABASE WishListApp_test_db;
+-- USE WishListApp_test_db;
+-- CREATE DATABASE WishListApp_db;
+-- USE WishListApp_db;
 
 CREATE TABLE User (
     id INT NOT NULL AUTO_INCREMENT,
