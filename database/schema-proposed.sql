@@ -5,10 +5,14 @@
 -- CREATE DATABASE WishListApp_db;
 -- USE WishListApp_db;
 
+-- Joins: 
+-- Wishlist + Items for actual wishlist content
+-- Contact + ContactList for contactList content
 CREATE TABLE User (
     id INT NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
     -- User attributes
+    name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Item (
