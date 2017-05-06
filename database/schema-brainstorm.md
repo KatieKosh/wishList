@@ -7,28 +7,34 @@ A user-based database with room for many wishlists, contact lists, contacts and 
 
 #### Table Relations
 * A User may have many wishlists. (One-to-Many)
+    * A wishlist belongs to one user. 
 * A User may have one contact list. (One-to-One)
-* A Wishlist may have many items. (One-to-Many)
+    * A Contact List belongs to one user.
 * An Item may be present in many wishlists. (Many-to-Many)
-* A Contact List belongs to one user. (One-to-One)
+    * (A wishlist may have many items)
 * A contact may belong to many contact lists (One-to-Many)
 
-#### Schema Ideas
+#### Schema Overview, sans attributes/columns
 * User
     * id
-    * name
-    * [(Safe for DB?) Authentication info]
-
-* Contact 
+* Item
     * id
-    * Name
-    * [Contact info, email, etc]
+* Contact
+    * id
+* WishList
+    * id
+    * User.id (who this belongs to)
+* ContactList
+    * id
+    * User.id (who this belongs to)
+* JOIN: Items in which list?
+    * id (individual item and wishList row, useful for "added date" etc.)
+    * WishList.id
+    * Item.id
+* JOIN: Who's in a contact list?
+    * id
+    * ContactList.id
+    * Contact.id
 
-* Contact-List-User 
-    * id as Contact List ID
-    * User.id
-
-* Contact-List-Table
-    * 
-
+This should handle every relation we need.
     

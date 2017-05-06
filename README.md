@@ -4,6 +4,7 @@
     * Login? 
     * JSON WEB Token?
     * https://auth0.com/
+    * https://auth0.com/blog/building-and-authenticating-nodejs-apps/
 2. Retrieve User 'Information'
     * Get from a database
     * A user's Basic Info, Wishlist(s), Contacts List
