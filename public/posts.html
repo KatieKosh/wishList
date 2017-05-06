@@ -7,29 +7,92 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href=>
         <title>Document</title>
+        <meta charset="UTF-8">
+      	<title>CMS - Express</title>
+      	<!-- Latest compiled and minified CSS & JS -->
+      	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
+      	<!-- <link rel="stylesheet" href="css/styles.css" media="screen" title="no title"> -->
+      	<script src="https://code.jquery.com/jquery.js"></script>
+      	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      	<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Homemade+Apple" rel="stylesheet">
 
-        <style>
-            body {
-              width: 100%;
-              height: 100%;
-            }
-            .wrapper {
+        <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet">
 
-                width: 95vw;
-                height: 95vh;
-                margin: 0 auto;
-                /*padding:25px;*/
-            }
 
-            .test {
-                background-image: url("image/wishList.jpg");
-                background-size: cover;
-                width: 100%;
-                height: 100%;
-                /*height: auto;*/
-                  /*border: 15px solid white;*/
-            }
-        </style>
+<style>
+
+body  {
+        background-image: url("image/wishList.jpg");
+        background-size: cover; width: 100%;
+        height: 100%;
+    }
+
+h1 {
+
+    font-family: 'Homemade Apple', cursive;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 125px;
+    margin-top: 110px;
+    color: white;
+    padding-bottom: 50px;
+    border-bottom: 2px solid white;
+    text-shadow: 15px 2px black;
+
+    }
+
+
+
+    		.btn-default {
+    			color: #ffffff;
+    			border-color: black;
+    			background-color: black;
+    		}
+
+    		.btn-success {
+    			color: #ffffff;
+    			background-color: black;
+    			border-color: black;
+    		}
+
+    		.btn-default {
+    		    color: #ffffff;
+    		    border-color: black;
+    		    background-color: black;
+    		    margin-left: 200px;
+    		    border: 2px solid white;
+    		}
+
+
+    		.btn-success {
+        color: #ffffff;
+        background-color: black;
+        border: 1px solid white;
+        margin-top: 10px;
+    }
+
+    .form-group {
+    margin-top: 50px;
+    background-color: rgba(128,128,128,0.3);
+    padding: 50px;
+    border-radius: 15px;
+    border: 2px solid white;
+    margin-bottom: 100px;
+
+  }
+
+  label {
+text-align: center;
+font-size: 40px;
+font-family: 'Homemade Apple', cursive;
+color: black;
+
+
+
+  }
+
+</style>
 
 
 
@@ -38,9 +101,58 @@
 
 <body>
 
-    <div class="wrapper">
-        <div class="test"></div>
-    </div>
+  <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <h1>Wish List</h1>
+            </div>
+        </div>
+
+
+        <div class="container">
+
+            <!-- <div class="row">
+              <div class="col-md-2 col-sm-2 top-30">
+                <a class="btn btn-default" href="/blog">Go to List</a>
+              </div> -->
+            </div>
+            <div class="col-md-6 col-md-offset-3">
+              <form id="cms">
+                <div class="form-group">
+                  <!-- <label for="title">Title:</label>
+                  <input type="text" class="form-control" id="title">
+                  <br /> -->
+                <label for="body">The Requested Wish List</label>
+                  <textarea class="form-control" rows="20" id="body"></textarea>
+                  <br />
+
+                  <!-- <label for="body">List E-mail Addresses of List Recipients</label>
+                    <textarea class="form-control" rows="10" id="body"></textarea>
+                  <div class="form-group">
+                    <label for="category">Select Category:</label>
+                    <select class="form-control" id="category">
+                      <option value="Personal">Wedding</option>
+                      <option value="Product Review">Birthday</option>
+                      <option value="Political">Graduation</option>
+                       <option value="Political">Celebration!</option> -->
+
+                    </select>
+                  
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
 
 
 
