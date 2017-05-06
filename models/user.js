@@ -18,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
 				// Takes in a parameter of all models
 				associate: function (models) {
 					// User.hasOne(models.ContactList);
-					User.hasMany(models.Wishlist, {
+					User.hasMany(models.wishlist, {
 						// If user is removed, remove all associated wishlists
 						onDelete: "CASCADE"
 					});
