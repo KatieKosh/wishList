@@ -54,10 +54,9 @@ font-family: 'Homemade Apple', cursive;
 padding-top: 20px;
 text-align: center;
 font-size: 125px;
-/*border-top: 5px solid white;*/
 margin-top: 100px;
-color: white;
-border-bottom: 2px solid white;
+color: #FFD700;
+border-bottom: 2px solid #FFD700;
 
 #pagegradient {
   background-image:
