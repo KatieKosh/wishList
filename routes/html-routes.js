@@ -21,10 +21,6 @@ module.exports = function(app) {
         res.redirect(req.session.returnTo || '/');
     });
 
-    // app.get('/callback', function(req, res) {
-    //     res.sendFile(path.join(__dirname, "../public/index.html"));
-    // });
-
     app.get('/login',function(req, res){
         // Same thing for the login page.
         res.render('login', { env: env });
