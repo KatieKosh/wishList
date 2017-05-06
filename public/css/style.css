@@ -32,6 +32,10 @@ background-image: url("../image/wishList.jpg");
 background-size: cover;
 height: 1300px;
 
+}
+
+.retailers {
+margin-top: 90px;
 
 }
 
@@ -54,8 +58,9 @@ font-family: 'Homemade Apple', cursive;
 padding-top: 20px;
 text-align: center;
 font-size: 125px;
-margin-top: 100px;
+margin-top: 150px;
 color: #FFD700;
+padding-bottom: 50px;
 border-bottom: 2px solid #FFD700;
 
 #pagegradient {
