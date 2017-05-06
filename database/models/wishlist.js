@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
             classMethods: {
                 // Joining
                 associate: function (models) {
-                    Wishlist.belongsToMany(Item, { through: "ItemsInWishlists" });
+                    Wishlist.belongsToMany(models.Item, { through: "ItemsInWishlists" });
                 }
             }
         }
