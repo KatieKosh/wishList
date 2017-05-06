@@ -18,8 +18,13 @@ module.exports = function (sequelize, DataTypes) {
         }
     },
         {
-            // Associations
-        }); // END COLUMNS DEFINE
+			// INSERT HERE ASSOCIATIONS
+			classMethods: {
+				associate: function (models) {
+					Contact.belongsToMany(models.ContactList, { through: "ContactsInContactLists"});
+				}
+			}
+		}); // END COLUMNS DEFINE
     // END TABLE DEFINE
     return Contact;
 };
