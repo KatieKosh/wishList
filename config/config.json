@@ -9,9 +9,9 @@
 	// },
 	"development": {
 		"username": "root",
-		"password": null,
-		"database": "database_development",
-		"host": "127.0.0.1",
+		"password": "8675309",
+		"database": "wishlist_dev_db",
+		"host": "localhost",
 		"dialect": "mysql"
 	},
 	"test": {
