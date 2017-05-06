@@ -16,15 +16,15 @@ module.exports = function(app) {
 
 	// We are also going to implement the callback route which will redirect the logged in user to the polls page if authentication succeeds.
 	app.get('/callback',
-      passport.authenticate('auth0', { failureRedirect: '/' }),
-      function(req, res) {
-        res.redirect(req.session.returnTo || '/');
+    passport.authenticate('auth0', { failureRedirect: '/' }),
+    function(req, res) {
+      res.redirect(req.session.returnTo || '/');
     });
 
-    app.get('/login',function(req, res){
+  app.get('/login',function(req, res){
         // Same thing for the login page.
         res.render('login', { env: env });
-    });
+      });
 
     // index route loades index.html
     app.get("/", function(req, res) {
@@ -35,4 +35,4 @@ module.exports = function(app) {
     	res.sendFile(path.join(__dirname, "../public/cms.html"));
     });
 
-};
+  };

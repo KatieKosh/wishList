@@ -71,3 +71,17 @@ db.sequelize.sync().then(function() {
 		console.log("App listening on PORT " + PORT);
 	});
 });
+
+//Here is working code to send emails... oh boy!
+
+// const sendmail = require('sendmail')();
+
+// sendmail({
+//     from: 'nodewishlist@yandex.com',
+//     to: 'zazador@gmail.com',
+//     subject: 'test sendmail',
+//     html: 'Mail of test sendmail ',
+//   }, function(err, reply) {
+//     console.log(err && err.stack);
+//     console.dir(reply);
+// });
