@@ -8,16 +8,22 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         }
-    },
-        {
-            // ASSOCIATIONS
-            classMethods: {
-                // Joining
-                associate: function (models) {
-                    Wishlist.belongsToMany(models.Item, { through: "ItemsInWishlists" });
-                }
-            }
-        }
+    }
+    //,
+        // {
+        //     // ASSOCIATIONS
+        //     classMethods: {
+        //         // Joining
+        //         associate: function (models) {
+        //             //Wishlist.belongsToMany(models.Item, { through: "ItemsInWishlists" });
+        //             Wishlist.belongsTo(models.User, {
+        //                 foreignKey: {
+        //                     allowNull: false
+        //                 }
+        //             });
+        //         }
+        //     }
+        // }
     );
 
     return Wishlist;

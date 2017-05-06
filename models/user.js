@@ -10,19 +10,21 @@ module.exports = function (sequelize, DataTypes) {
 			validate: {}
 			// Insert validation
 		}
-	},
-		{
-			//ASSOCIATIONS
-			classMethods: {
-				// Takes in a parameter of all models
-				associate: function (models) {
-					User.hasOne(models.ContactList);
-					User.hasMany(models.Wishlist, {
-						// If user is removed, remove all associated wishlists
-						onDelete: "CASCADE"
-					});
-				}
-			}
-		});
+	}
+		// ,
+		// {
+		// 	//ASSOCIATIONS
+		// 	classMethods: {
+		// 		// Takes in a parameter of all models
+		// 		associate: function (models) {
+		// 			// User.hasOne(models.ContactList);
+		// 			User.hasMany(models.Wishlist, {
+		// 				// If user is removed, remove all associated wishlists
+		// 				onDelete: "CASCADE"
+		// 			});
+		// 		}
+		// 	}
+		// }
+	);
 	return User;
 };
