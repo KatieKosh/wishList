@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
 			// Associations should be handled by "hasOne" in user.js.
 			classMethods: {
 				associate: function (models) {
-					ContactList.belongsToMany(Contact, { through: "ContactsInContactLists"});
+					ContactList.belongsToMany(models.Contact, { through: "ContactsInContactLists"});
 				}
 			}
 		});

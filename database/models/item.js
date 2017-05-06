@@ -39,7 +39,7 @@ module.exports = function (sequelize, DataTypes) {
             // ASSOCIATIONS
             classMethods: {
                 associate: function (models) {
-                    Item.belongsToMany(Wishlist, { through: "ItemsInWishlists" });
+                    Item.belongsToMany(models.Wishlist, { through: "ItemsInWishlists" });
                 }
             }
         }); // END COLUMNS DEFINE

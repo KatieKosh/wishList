@@ -21,7 +21,7 @@ module.exports = function (sequelize, DataTypes) {
 			// INSERT HERE ASSOCIATIONS
 			classMethods: {
 				associate: function (models) {
-					Contact.belongsToMany(ContactList, { through: "ContactsInContactLists"});
+					Contact.belongsToMany(models.ContactList, { through: "ContactsInContactLists"});
 				}
 			}
 		}); // END COLUMNS DEFINE
