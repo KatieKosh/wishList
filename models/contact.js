@@ -16,7 +16,14 @@ module.exports = function (sequelize, DataTypes) {
             validate: {}
             // Insert Validation
         }
-    }
+    },
+        {
+            classMethods: {
+                associate: function (models) {
+                    Contact.belongsToMany(models.Contactlist, { through: "ContactContactlist" });
+                }
+            }
+        }
         // ,
         // {
         //     // INSERT HERE ASSOCIATIONS

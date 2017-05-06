@@ -29,15 +29,15 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
             // Insert Validation
         }
-    }//,
-        // {
-        //     // ASSOCIATIONS
-        //     classMethods: {
-        //         associate: function (models) {
-        //             Item.belongsToMany(models.Wishlist, { through: "ItemsInWishlists" });
-        //         }
-        //     }
-        // }
+    },
+        {
+            // ASSOCIATIONS
+            classMethods: {
+                associate: function (models) {
+                    Item.belongsToMany(models.Wishlist, { through: "ItemWishlist" });
+                }
+            }
+        }
     ); // END COLUMNS DEFINE
     // END TABLE DEFINE
     return Item;
