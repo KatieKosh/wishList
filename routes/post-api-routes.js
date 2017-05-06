@@ -5,9 +5,13 @@
 // Dependencies
 var db = require("../models");
 
+
+
 // routes
 module.exports = function(app) {
     // GET, POST, PUT & DELETE routes go here
 
-
+    // Getting First Submit info from cms.html (Title of wishlist, Category of Wishlist, String of emails, userID/AuthId (from current session)
+    // Using the current ID, we can then link to the proper wishlist and contact list.
+    // MNN
 };
