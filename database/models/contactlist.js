@@ -7,6 +7,12 @@ module.exports = function (sequelize, DataTypes) {
 	},
 		{
 			// INSERT HERE ASSOCIATIONS
+			// Associations should be handled by "hasOne" in user.js.
+			classMethods: {
+				associate: function (models) {
+					ContactList.belongsToMany(Contact, { through: "ContactsInContactLists"});
+				}
+			}
 		});
     
     return ContactList;
