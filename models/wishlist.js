@@ -31,10 +31,11 @@
 // };
 module.exports = function(sequelize, DataTypes) {
   var Wishlist = sequelize.define("Wishlist", {
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+    category: DataTypes.STRING,
   },
     {
       // We're saying that we want our Author to have Wishlists
