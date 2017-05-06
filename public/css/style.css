@@ -59,9 +59,10 @@ padding-top: 20px;
 text-align: center;
 font-size: 125px;
 margin-top: 150px;
-color: #FFD700;
+color: white;
 padding-bottom: 50px;
-border-bottom: 2px solid #FFD700;
+border-bottom: 2px solid white;
+text-shadow: 15px 2px black;
 
 #pagegradient {
   background-image:
