@@ -24,7 +24,8 @@
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     // Giving the User model a name of type STRING
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    authId: DataTypes.STRING
   },
     // Here we'll pass a second "classMethods" object into the define method
     // This is for any additional configuration we want to give our models

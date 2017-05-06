@@ -31,17 +31,9 @@
 // };
 module.exports = function(sequelize, DataTypes) {
   var Wishlist = sequelize.define("Wishlist", {
-    title: {
+    name: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
-    body: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      len: [1]
+      allowNull: false
     }
   },
     {
