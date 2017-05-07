@@ -35,9 +35,7 @@ module.exports = function (sequelize, DataTypes) {
 			classMethods: {
 				associate: function (models) {
 					User.hasOne(models.Contactlist);
-					User.hasMany(models.Wishlist, {
-						onDelete: "cascade"
-					});
+					User.hasOne(models.Wishlist);
 				}
 			}
 		}
