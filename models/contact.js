@@ -7,14 +7,20 @@ module.exports = function (sequelize, DataTypes) {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {}
-            // Insert validation
+            validate: {
+                notNull: true,
+                notEmpty: true
+            }
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {}
-            // Insert Validation
+            validate: {
+                isEmail: {
+                    args: true,
+                    msg: "Please use a proper email address."
+                }
+            }
         }
     },
         {

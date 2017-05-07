@@ -26,7 +26,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         img_url: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
             // Insert Validation
         }
     },
