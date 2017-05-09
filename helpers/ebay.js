@@ -10,7 +10,6 @@ module.exports = function(app) {
     var search1 = 'https://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=JeffMcMa-WishList-PRD-2090fc79c-bc5ccb42&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=' + userInput + '&paginationInput.entriesPerPage=6&GLOBAL-ID=EBAY-US&siteid=0';
 
     request(search0,
-
         function(error, response, body) {
             var ebayArray = [];
             if (!error && response.statusCode == 200) {
@@ -36,5 +35,6 @@ module.exports = function(app) {
             console.log(ebaySorted[0].name);
             console.log(ebaySorted[0].salePrice);
             console.log(ebaySorted[0].productUrl);
+            module.exports = ebaySorted;
         });
 };

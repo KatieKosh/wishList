@@ -32,6 +32,7 @@ module.exports = function(app) {
             console.log(walmartSorted[0].name);
             console.log(walmartSorted[0].salePrice);
             console.log(walmartSorted[0].productUrl);
+            return walmartSorted;
 
 
             // var arr = Object.keys(walmartArray).map(function(key) { return walmartArray[key]; });
