@@ -35,7 +35,7 @@ module.exports = function (sequelize, DataTypes) {
 			classMethods: {
 				associate: function (models) {
 					User.hasOne(models.Contactlist);
-					User.hasOne(models.Wishlist);
+					User.hasMany(models.Wishlist);
 				}
 			}
 		}
