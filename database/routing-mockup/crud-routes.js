@@ -32,7 +32,7 @@ module.exports = function (app) {
 
     // Initial Creation Route
     // Change pointer as neccessary.
-    app.post("", function (req, res) {
+    app.post("/api/test", function (req, res) {
         // Repackage request body for readability
         var attribute = {
             userName: req.body.name,
@@ -70,7 +70,7 @@ module.exports = function (app) {
                 }
             );   
         }).then( function(){
-            // What to do after.
+            res.end();
         });
     });
 };

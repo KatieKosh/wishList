@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
     var Contact = sequelize.define("Contact", {
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 notNull: true,
                 notEmpty: true
