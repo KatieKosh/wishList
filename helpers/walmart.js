@@ -19,10 +19,10 @@ module.exports = function(app) {
                         "salePrice": parseInt(JSON.parse(body).items[i].salePrice),
                         "productUrl": JSON.parse(body).items[i].productUrl
                     });
-                    console.log("=======================Walmart" + i + "===================================");
-                    console.log("\n" + "Product Name: " + JSON.parse(body).items[i].name);
-                    console.log("Price: $" + JSON.parse(body).items[i].salePrice);
-                    console.log("Product URL: " + JSON.parse(body).items[i].productUrl + "\n");
+                    // console.log("=======================Walmart" + i + "===================================");
+                    // console.log("\n" + "Product Name: " + JSON.parse(body).items[i].name);
+                    // console.log("Price: $" + JSON.parse(body).items[i].salePrice);
+                    // console.log("Product URL: " + JSON.parse(body).items[i].productUrl + "\n");
                 }
             }
             // console.log(walmartArray);
