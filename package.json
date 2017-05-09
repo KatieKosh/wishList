@@ -6,10 +6,12 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "lodash.orderby": "^4.6.0",
     "mysql": "^2.13.0",
     "path": "^0.12.7",
     "request": "^2.81.0",
-    "sequelize": "^3.30.4"
+    "sequelize": "^3.30.4",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {},
   "scripts": {

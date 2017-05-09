@@ -30,13 +30,25 @@ border-top: 20px solid black;
 /*margin: auto;*/
 background-image: url("../image/wishList.jpg");
 background-size: cover;
-height: 1300px;
 
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+container {
+
+  padding: 0px;
+}
+
+
+
 .retailers {
 margin-top: 70px;
-
+padding-bottom: 400px;
 }
 
 
@@ -369,4 +381,13 @@ font-size: 30px;
 margin-top: 40px;
 }
 
-]
+.well-sm {
+
+/*position: sticky;*/
+text-align: center;
+background-color: white !important;
+margin-top: 325px;
+bottom: 0px;
+font-family: 'Love Ya Like A Sister', cursive;
+margin-bottom: 0px;
+}
