@@ -5,7 +5,7 @@ var orderBy = require("lodash.orderby");
 
 // module.exports = function(app) {
 
-var ebayApi = function() {
+var ebayApi = function(cb) {
     var userInput = "iphone5";
 
     var search0 = 'https://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=JeffMcMa-WishList-PRD-2090fc79c-bc5ccb42&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=iPhone5&paginationInput.entriesPerPage=10&GLOBAL-ID=EBAY-US&siteid=0';
@@ -37,10 +37,11 @@ var ebayApi = function() {
         console.log(ebaySorted[0].salePrice);
         console.log(ebaySorted[0].productUrl);
         // console.log(ebaySorted);
+        cb(ebaySorted);
         // return ebaySorted;
     });
     // return ebayApi;
 };
 
 // };
-// module.exports = ebayApi;
+module.exports = ebayApi;

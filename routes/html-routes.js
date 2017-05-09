@@ -5,13 +5,11 @@
 // Dependencies
 var path = require("path");
 
-var ebaySorted = require("../helpers/ebay.js");
-var walmartSorted = require("../helpers/walmart.js");
+var ebayApi = require("../helpers/ebay.js");
+var walmartApi = require("../helpers/walmart.js");
 
 // Routes
 module.exports = function(app) {
-
-    console.log("Routes ebay api: " + ebaySorted);
 
     // index route loads index.html
     app.get("/", function(req, res) {
@@ -26,11 +24,15 @@ module.exports = function(app) {
     // data routes - loads walmart, ebay & amazon JSON data
 
     app.get("/api/ebay", function(req, res) {
-        return res.json(ebaySorted);
+        ebayApi(function(ebaySorted) {
+            res.json(ebaySorted[0]);
+        });
     });
 
     app.get("/api/walmart", function(req, res) {
-        return res.json(walmartSorted);
+        walmartApi(function(walmartSorted) {
+            res.json(walmartSorted[0]);
+        });
     });
 
 };
