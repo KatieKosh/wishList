@@ -1,30 +1,44 @@
-// Users Model
-// 
+// module.exports = function(sequelize, DataTypes) {
+//   var Author = sequelize.define("Author", {
+//     // Giving the Author model a name of type STRING
+//     name: DataTypes.STRING
+//   },
+//     // Here we'll pass a second "classMethods" object into the define method
+//     // This is for any additional configuration we want to give our models
+//     {
+//       // We're saying that we want our Author to have Posts
+//       classMethods: {
+//         associate: function(models) {
+//           // Associating Author with Posts
+//           // When an Author is deleted, also delete any associated Posts
+//           Author.hasMany(models.Post, {
+//             onDelete: "cascade"
+//           });
+//         }
+//       }
+//     }
+//   );
+//   return Author;
+// };
 
 module.exports = function (sequelize, DataTypes) {
 	var User = sequelize.define("User", {
-		// ATTRIBUTES
+		// Giving the User model a name of type STRING
 		name: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {}
-			// Insert validation
+			type: DataTypes.STRING
+		},
+		authId: {
+			type: DataTypes.STRING
 		}
-	}
-		// ,
-		// {
-		// 	//ASSOCIATIONS
-		// 	classMethods: {
-		// 		// Takes in a parameter of all models
-		// 		associate: function (models) {
-		// 			// User.hasOne(models.ContactList);
-		// 			User.hasMany(models.wishlist, {
-		// 				// If user is removed, remove all associated wishlists
-		// 				onDelete: "CASCADE"
-		// 			});
-		// 		}
-		// 	}
-		// }
+	},
+		{
+			classMethods: {
+				associate: function (models) {
+					User.hasOne(models.Contactlist);
+					User.hasMany(models.Wishlist);
+				}
+			}
+		}
 	);
 	return User;
 };

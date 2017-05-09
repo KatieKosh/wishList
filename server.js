@@ -65,6 +65,10 @@ app.use(express.static("./public"));
 require("./routes/html-routes.js")(app);
 require("./routes/post-api-routes.js")(app);
 
+// walmart & ebay api test for function 
+// require("./helpers/walmart.js")(app);
+// require("./helpers/ebay.js")(app);
+
 // Syncing our sequelize models and then starting our express app
 db.sequelize.sync().then(function() {
 	app.listen(PORT, function() {
@@ -85,3 +89,4 @@ db.sequelize.sync().then(function() {
 //     console.log(err && err.stack);
 //     console.dir(reply);
 // });
+

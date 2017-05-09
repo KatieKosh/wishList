@@ -2,20 +2,23 @@
 // 
 
 module.exports = function (sequelize, DataTypes) {
-	var ContactList = sequelize.define("ContactList", {
+	var Contactlist = sequelize.define("Contactlist", {
 		// ATTRIBUTES...?
-	}
-		// ,
-		// {
-		// 	// INSERT HERE ASSOCIATIONS
-		// 	// Associations should be handled by "hasOne" in user.js.
-		// 	classMethods: {
-		// 		associate: function (models) {
-		// 			ContactList.belongsToMany(models.Contact, { through: "ContactsInContactLists" });
-		// 		}
-		// 	}
-		// }
+	},
+		{
+			classMethods: {
+				associate: function (models) {
+					Contactlist.belongsTo(models.User, {
+						foreignKey: {
+							allowNull: false
+						}
+					});
+					Contactlist.belongsTo(models.User);
+					Contactlist.belongsToMany(models.Contact, { through: "ContactContactlist"});
+				}
+			}
+		}
 	);
 
-	return ContactList;
+	return Contactlist;
 };

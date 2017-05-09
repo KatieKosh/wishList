@@ -11,33 +11,33 @@ module.exports = function (sequelize, DataTypes) {
         },
         best_price: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
             // Insert Validation
         },
         source_name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
             // Insert Validation
         },
         source_url: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
             // Insert Validation
         },
         img_url: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
             // Insert Validation
         }
-    }//,
-        // {
-        //     // ASSOCIATIONS
-        //     classMethods: {
-        //         associate: function (models) {
-        //             Item.belongsToMany(models.Wishlist, { through: "ItemsInWishlists" });
-        //         }
-        //     }
-        // }
+    },
+        {
+            // ASSOCIATIONS
+            classMethods: {
+                associate: function (models) {
+                    Item.belongsToMany(models.Wishlist, { through: "ItemWishlist" });
+                }
+            }
+        }
     ); // END COLUMNS DEFINE
     // END TABLE DEFINE
     return Item;
