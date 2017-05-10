@@ -36,7 +36,7 @@ module.exports = function (app) {
         // Repackage request body for readability
         var attribute = {
             userName: req.body.name,
-            userAuthId: req.body.authId,
+            userAuthId: req.user.id,
             wishlistTitle: req.body.title,
             wishlistCategory: req.body.category,
             rawEmails: req.body.emails
