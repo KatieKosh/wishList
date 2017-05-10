@@ -30,9 +30,10 @@ module.exports = function(app) {
     }
     */
 
-    // Initial Creation Route
+    // Initial Creation Route. Create rows from user input.S
     // Change pointer as neccessary.
     app.post("/api/cms", function(req, res) {
+
         // Repackage request body for readability
         var attribute = {
             userName: req.body.name,
@@ -67,6 +68,45 @@ module.exports = function(app) {
             });
         }).then(function() {
             res.end();
+        });
+    });
+
+    // Item adding route
+    app.post("/api/items", function(req, res) {
+        // Repackage names for readability.
+        var attribute = {
+            userAuthId: req.body.userId,
+            itemName: req.body.name,
+            itemPrice: req.body.salePrice,
+            itemUrl: req.body.productUrl,
+            itemImgUrl: req.body.productImg
+        };
+
+        // Find userID via AuthID
+        // Using findAll, so index 0 is for grabbing first item.
+        db.User.findAll({
+            where: {
+                authId: attribute.userAuthId
+            }
+        }).then(function(user) {
+            console.log("Return of first search: ", user);
+            console.log("user id index 0: ", user[0].id);
+
+            db.Wishlist.findAll({
+                where: {
+                    UserId: user[0].id
+                }
+            }).then(function(wishlist) {
+                wishlist[0].createItem({
+                    name: attribute.itemName,
+                    best_price: attribute.itemPrice,
+                    source_url: attribute.itemUrl,
+                    img_url: attribute.itemImgUrl
+                }).then(function() {
+                    console.log("item added");
+                    res.end();
+                });
+            });
         });
     });
 };

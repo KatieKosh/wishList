@@ -21,12 +21,18 @@ module.exports = function(app) {
     app.get('/callback',
         passport.authenticate('auth0', { failureRedirect: '/' }),
         function(req, res) {
-            res.redirect(req.session.returnTo || '/');
+            res.redirect(req.session.returnTo || '/cms');
         });
 
     app.get('/login', function(req, res) {
         // Same thing for the login page.
         res.render('login', { env: env });
+    });
+
+    app.get('/logout', function(req, res){
+        // For the logout page, we don't need to render a page, we just want the user to be logged out when they hit this page. We'll use the ExpressJS built in logout method, and then we'll redirect the user back to the homepage.
+        req.logout();
+        res.redirect('/');
     });
 
     // index route loads index.html
@@ -41,6 +47,10 @@ module.exports = function(app) {
 
     app.get("/posts", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/posts.html"));
+    });
+
+    app.get("/final", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/final.html"));
     });
 
     // data routes - loads walmart, ebay & amazon JSON data
