@@ -18,18 +18,7 @@ function formatEmailList(emailList) {
 // Routes as export
 module.exports = function (app) {
     // GET, POST, PUT & DELETE routes go here
-    /* 
-    Assumptions for req.body:
-    JSON: req.body...
-    {
-        authId: string,
-        title: string,
-        emails: string,
-        category: string,
-        ...etc
-    }
-    */
-
+    
     // Initial Creation Route
     // Change pointer as neccessary.
     app.post("/api/initialize", function (req, res) {

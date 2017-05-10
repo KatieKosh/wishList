@@ -18,17 +18,10 @@ function formatEmailList(emailList) {
 // Routes as export
 module.exports = function (app) {
     // GET, POST, PUT & DELETE routes go here
-    /* 
-    Assumptions for req.body:
-    JSON: req.body...
-    {
-        authId: string,
-        title: string,
-        emails: string,
-        category: string,
-        ...etc
-    }
-    */
+    // req.user.id is the unique id of a user. user as auth ID
+    
+    // Route to return all items as json.
+
 
     // Initial Creation Route. Create rows from user input.S
     // Change pointer as neccessary.
@@ -36,7 +29,7 @@ module.exports = function (app) {
         // Repackage request body for readability
         var attribute = {
             userName: req.body.name,
-            userAuthId: req.body.authId,
+            userAuthId: req.user.id,
             wishlistTitle: req.body.title,
             wishlistCategory: req.body.category,
             rawEmails: req.body.emails
@@ -78,7 +71,7 @@ module.exports = function (app) {
     app.post("/api/items", function (req, res) {
         // Repackage names for readability.
         var attribute = {
-            userAuthId: req.body.userId,
+            userAuthId: req.user.id,
             itemName: req.body.name,
             itemPrice: req.body.salePrice,
             itemUrl: req.body.productUrl,
@@ -92,8 +85,8 @@ module.exports = function (app) {
                 authId: attribute.userAuthId
             }
         }).then(function (user) {
-            console.log("Return of first search: ", user);
-            console.log("user id index 0: ", user[0].id);
+            // console.log("Return of first search: ", user);
+            // console.log("user id index 0: ", user[0].id);
 
             db.Wishlist.findAll({
                 where: {
