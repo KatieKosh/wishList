@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "mysql1234mysql",
+        "password": "password",
         "database": "wishlist_dev_db",
         "host": "localhost",
         "dialect": "mysql"
