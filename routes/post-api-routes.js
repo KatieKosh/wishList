@@ -33,12 +33,12 @@ module.exports = function(app) {
     // Initial Creation Route. Create rows from user input.S
     // Change pointer as neccessary.
     app.post("/api/cms", function(req, res) {
-
+        console.log(req.body);
         // Repackage request body for readability
         var attribute = {
             userName: req.body.name,
             userAuthId: req.body.authId,
-            wishlistTitle: req.body.titleInput,
+            wishlistTitle: req.body.title,
             wishlistCategory: req.body.category,
             rawEmails: req.body.emails
         };
@@ -52,7 +52,7 @@ module.exports = function(app) {
             }
             // After user row created...
         ).then(function(user) {
-            // Create and associate contact list.
+            // Create and associate co  ntact list.
             // Create and associate contacts to contacts list.
             user.createContactlist({}).then(function(contactlist) {
                 emailArray.forEach(function(email) {

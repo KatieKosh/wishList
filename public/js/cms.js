@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // Getting jQuery references to the post body, title, form, and author select
     var listInput = $("#list");
-    var titleInput = $("#title");
+    var titleInput = $("#listTitle");
     var emailInput = $("#emails");
     var categoryInput = $("#category");
     var cmsForm = $("#cms");
@@ -21,15 +21,15 @@ $(document).ready(function() {
         event.preventDefault();
         console.log(titleInput.val());
         console.log(listInput.val());
-        console.log(emails.val());
-        console.log(cmsForm.val());
+        console.log(emailInput.val());
+        console.log(categoryInput.val());
 
         // Wont submit the post if we are missing a body, title, or author
-        if (!titleInput.val().trim() || !listInput.val().trim() || !emails.val()) {
+        if (!titleInput.val().trim() || !listInput.val().trim() || !emailInput.val()) {
             return;
         }
         // Constructing a newPost object to hand to the database
-        var userList = ({
+        var userList = {
             title: titleInput
                 .val()
                 .trim(),
@@ -43,14 +43,15 @@ $(document).ready(function() {
 
                 .val()
                 .trim(),
-        });
+        };
 
         submitPost(userList);
+        console.log("working");
     }
 
     // Submits a new post and brings user to blog page upon completion
     function submitPost(userList) {
-        $.post("/api/posts", userList, function() {
+        $.post("/api/cms", userList, function() {
             window.location.href = "/posts";
         });
     }
