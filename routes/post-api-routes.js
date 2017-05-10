@@ -7,7 +7,7 @@ var db = require("../models");
 function formatEmailList(emailList) {
     var rawList = emailList;
     var rawArray = rawList.split(",");
-    var returnArray = rawArray.map(function (item) {
+    var returnArray = rawArray.map(function(item) {
         return item.trim();
     });
 
@@ -16,7 +16,7 @@ function formatEmailList(emailList) {
 
 
 // Routes as export
-module.exports = function (app) {
+module.exports = function(app) {
     // GET, POST, PUT & DELETE routes go here
     // req.user.id is the unique id of a user. user as auth ID
     
@@ -42,12 +42,15 @@ module.exports = function (app) {
 
     // Initial Creation Route. Create rows from user input.S
     // Change pointer as neccessary.
-    app.post("/api/initialize", function (req, res) {
+    app.post("/api/cms", function(req, res) {
+
         // Repackage request body for readability
         var attribute = {
             userName: req.body.name,
-            userAuthId: req.user.id,
-            wishlistTitle: req.body.title,
+
+            userAuthId: req.body.authId,
+            wishlistTitle: req.body.titleInput,
+
             wishlistCategory: req.body.category,
             rawEmails: req.body.emails
         };
@@ -55,37 +58,33 @@ module.exports = function (app) {
         var emailArray = formatEmailList(attribute.rawEmails);
 
         // Create user row, assign unique authO ID
-        db.User.create(
-            {
+        db.User.create({
                 authId: attribute.userAuthId,
                 name: attribute.userName
             }
             // After user row created...
-        ).then(function (user) {
+        ).then(function(user) {
             // Create and associate contact list.
             // Create and associate contacts to contacts list.
-            user.createContactlist({}).then(function (contactlist) {
-                emailArray.forEach(function (email) {
-                    contactlist.createContact(
-                        {
-                            email: email
-                        });
+            user.createContactlist({}).then(function(contactlist) {
+                emailArray.forEach(function(email) {
+                    contactlist.createContact({
+                        email: email
+                    });
                 });
             });
             // Create and associate wishlist.
-            user.createWishlist(
-                {
-                    title: attribute.wishlistTitle,
-                    category: attribute.wishlistCategory
-                }
-            );
-        }).then(function () {
+            user.createWishlist({
+                title: attribute.wishlistTitle,
+                category: attribute.wishlistCategory
+            });
+        }).then(function() {
             res.end();
         });
     });
 
     // Item adding route
-    app.post("/api/items", function (req, res) {
+    app.post("/api/items", function(req, res) {
         // Repackage names for readability.
         var attribute = {
             userAuthId: req.user.id,
@@ -101,21 +100,23 @@ module.exports = function (app) {
             where: {
                 authId: attribute.userAuthId
             }
+
         }).then(function (user) {
             // console.log("Return of first search: ", user);
             // console.log("user id index 0: ", user[0].id);
+
 
             db.Wishlist.findAll({
                 where: {
                     UserId: user[0].id
                 }
-            }).then(function (wishlist) {
+            }).then(function(wishlist) {
                 wishlist[0].createItem({
                     name: attribute.itemName,
                     best_price: attribute.itemPrice,
                     source_url: attribute.itemUrl,
                     img_url: attribute.itemImgUrl
-                }).then(function () {
+                }).then(function() {
                     console.log("item added");
                     res.end();
                 });
@@ -123,4 +124,3 @@ module.exports = function (app) {
         });
     });
 };
-
