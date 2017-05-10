@@ -1,9 +1,8 @@
 // Contactlist Model
-// 
 
 module.exports = function (sequelize, DataTypes) {
 	var Contactlist = sequelize.define("Contactlist", {
-		// ATTRIBUTES...?
+		// ATTRIBUTES
 	},
 		{
 			classMethods: {
