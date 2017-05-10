@@ -18,7 +18,24 @@ function formatEmailList(emailList) {
 // Routes as export
 module.exports = function (app) {
     // GET, POST, PUT & DELETE routes go here
-    
+    app.post("/api/useritems", function(req, res) {
+        // Change as necessary
+        var authId = req.body.authId;
+
+        db.User.findAll({
+            where: {
+                authId: authId
+            },
+            include: [{
+                model: Wishlist,
+                include: [{
+                    model: Item
+                }]
+            }]
+        }).then(function(user){
+            res.json(user);
+        });
+    });
     // Initial Creation Route
     // Change pointer as neccessary.
     app.post("/api/initialize", function (req, res) {

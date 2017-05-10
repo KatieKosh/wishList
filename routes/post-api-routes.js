@@ -21,7 +21,24 @@ module.exports = function (app) {
     // req.user.id is the unique id of a user. user as auth ID
     
     // Route to return all items as json.
+    app.post("/api/useritems", function(req, res) {
+        // Change as necessary
+        var authId = req.body.authId;
 
+        db.User.findAll({
+            where: {
+                authId: authId
+            },
+            include: [{
+                model: Wishlist,
+                include: [{
+                    model: Item
+                }]
+            }]
+        }).then(function(user){
+            res.json(user);
+        });
+    });
 
     // Initial Creation Route. Create rows from user input.S
     // Change pointer as neccessary.
