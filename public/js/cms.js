@@ -36,8 +36,9 @@ $(document).ready(function() {
                 .val()
                 .trim(),
         });
+
+        submitPost(userList);
     }
-    // submitPost(userList);
 
     // Submits a new post and brings user to blog page upon completion
     function submitPost(userList) {
