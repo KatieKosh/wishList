@@ -86,27 +86,32 @@ module.exports = function (app) {
         };
 
         // Find userID via AuthID
-        db.User.findOne({
+        // Using findAll, so index 0 is for grabbing first item.
+        db.User.findAll({
             where: {
                 authId: attribute.userAuthId
             }
         }).then(function (user) {
-            db.Wishlist.findOne({
+            console.log("Return of first search: ", user);
+            console.log("user id index 0: ", user[0].id);
+
+            db.Wishlist.findAll({
                 where: {
-                    UserId: user.id
+                    UserId: user[0].id
                 }
             }).then(function (wishlist) {
-                wishlist.createItem({
+                wishlist[0].createItem({
                     name: attribute.itemName,
                     best_price: attribute.itemPrice,
                     source_url: attribute.itemUrl,
                     img_url: attribute.itemImgUrl
+                }).then(function () {
+                    console.log("item added");
+                    res.end();
                 });
             });
-        }).then(function(){
-            console.log("item added");
-            res.end();
         });
     });
+
 };
 

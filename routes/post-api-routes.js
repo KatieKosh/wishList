@@ -50,27 +50,66 @@ module.exports = function (app) {
                 authId: attribute.userAuthId,
                 name: attribute.userName
             }
-        // After user row created...
-        ).then(function(user) {
-        // Create and associate contact list.
-        // Create and associate contacts to contacts list.
-            user.createContactlist({}).then(function(contactlist) {
-                emailArray.forEach( function(email){
+            // After user row created...
+        ).then(function (user) {
+            // Create and associate contact list.
+            // Create and associate contacts to contacts list.
+            user.createContactlist({}).then(function (contactlist) {
+                emailArray.forEach(function (email) {
                     contactlist.createContact(
                         {
                             email: email
                         });
                 });
             });
-        // Create and associate wishlist.
+            // Create and associate wishlist.
             user.createWishlist(
                 {
                     title: attribute.wishlistTitle,
                     category: attribute.wishlistCategory
                 }
-            );   
-        }).then( function(){
+            );
+        }).then(function () {
             res.end();
+        });
+    });
+
+    // Item adding route
+    app.post("/api/items", function (req, res) {
+        // Repackage names for readability.
+        var attribute = {
+            userAuthId: req.body.userId,
+            itemName: req.body.name,
+            itemPrice: req.body.salePrice,
+            itemUrl: req.body.productUrl,
+            itemImgUrl: req.body.productImg
+        };
+
+        // Find userID via AuthID
+        // Using findAll, so index 0 is for grabbing first item.
+        db.User.findAll({
+            where: {
+                authId: attribute.userAuthId
+            }
+        }).then(function (user) {
+            console.log("Return of first search: ", user);
+            console.log("user id index 0: ", user[0].id);
+
+            db.Wishlist.findAll({
+                where: {
+                    UserId: user[0].id
+                }
+            }).then(function (wishlist) {
+                wishlist[0].createItem({
+                    name: attribute.itemName,
+                    best_price: attribute.itemPrice,
+                    source_url: attribute.itemUrl,
+                    img_url: attribute.itemImgUrl
+                }).then(function () {
+                    console.log("item added");
+                    res.end();
+                });
+            });
         });
     });
 };
