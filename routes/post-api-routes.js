@@ -30,9 +30,9 @@ module.exports = function (app) {
     }
     */
 
-    // Initial Creation Route
+    // Initial Creation Route. Create rows from user input.S
     // Change pointer as neccessary.
-    app.post("/api/test", function (req, res) {
+    app.post("/api/initialize", function (req, res) {
         // Repackage request body for readability
         var attribute = {
             userName: req.body.name,
