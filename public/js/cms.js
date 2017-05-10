@@ -2,7 +2,8 @@ $(document).ready(function() {
     // Getting jQuery references to the post body, title, form, and author select
     var listInput = $("#list");
     var titleInput = $("#title");
-    var emails = $("#emails");
+    var emailInput = $("#emails");
+    var categoryInput = $("#category");
     var cmsForm = $("#cms");
     // var authorSelect = $("#author");
     // Adding an event listener for when the form is submitted
@@ -32,9 +33,14 @@ $(document).ready(function() {
             list: listInput
                 .val()
                 .trim(),
-            emails: bodyInput
+            emails: emailInput
+
                 .val()
                 .trim(),
+            category: categoryInput
+
+                    .val()
+                    .trim(),
         });
 
         submitPost(userList);
