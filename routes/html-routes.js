@@ -20,6 +20,11 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/cms.html"));
     });
 
+    app.get("/posts", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/posts.html"));
+    });
+
+
 
     // data routes - loads walmart, ebay & amazon JSON data
 
