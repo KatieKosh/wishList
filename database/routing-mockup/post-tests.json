@@ -1,0 +1,55 @@
+{
+	"name": "Kimmy",
+	"authId": "Drop Tabs of Data",
+	"title": "Sd",
+	"category": "My arrogant Fiend",
+	"emails": "michael@mo.com, Teimmo53@yo.com, epsom@salt.com"
+}
+
+{
+	"name": "Bobby",
+	"authId": "nodice",
+	"title": "The Dark Lord.",
+	"category": "TickleFight",
+	"emails": "squiod@gof.com, areitemoidestriot@gof.com"
+}
+
+{
+	"name": "Angela Demonda",
+	"authId": "helloworld",
+	"title": "sassy",
+	"category": "TickleFight",
+	"emails": "michael@moment.com, saro53@yo.com, epsom@salet.com, emmet@skyward.com"
+}
+
+{
+	"userId": "nodice",
+    "name": "I Love NY Shirt, Small",
+    "salePrice": "35",
+    "productUrl": "cat.com",
+    "productImg": "fish.jpg"
+}
+
+{
+	"userId": "nodice",
+    "name": "Mechanical Bacon",
+    "salePrice": "325",
+    "productUrl": "cff.com",
+    "productImg": "fccccc.jpg"
+}
+
+{
+	"userId": "nodice",
+    "name": "A exotic item",
+    "salePrice": "13",
+    "productUrl": "ouch.com",
+    "productImg": "yourmom.jpg"
+}
+
+{
+	"userId": "nodice",
+    "name": "My hair clippings",
+    "salePrice": "1235",
+    "productUrl": "doabl.com",
+    "productImg": "hihat.jpg"
+}
