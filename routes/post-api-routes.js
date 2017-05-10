@@ -1,5 +1,7 @@
 // Dependent on Sequelize Model.
 var db = require("../models");
+var ebayApi = require("../helpers/ebay.js");
+var walmartApi = require("../helpers/walmart.js");
 
 // Helper functions: Turn Email comma lists into array of json-like objects to pass into Sequelize
 // Expects string of emails, separated by commas
@@ -43,7 +45,7 @@ module.exports = function(app) {
     // Initial Creation Route. Create rows from user input.S
     // Change pointer as neccessary.
     app.post("/api/cms", function(req, res) {
-        console.log(req.body);
+        console.log("post-api-routes req.body: " + req.body);
         // Repackage request body for readability
         var attribute = {
             userName: req.body.name,
@@ -51,7 +53,8 @@ module.exports = function(app) {
             userAuthId: req.body.authId,
             wishlistTitle: req.body.title,
             wishlistCategory: req.body.category,
-            rawEmails: req.body.emails
+            rawEmails: req.body.emails,
+            wishListItem: req.body.list
         };
 
         var emailArray = formatEmailList(attribute.rawEmails);
@@ -63,20 +66,27 @@ module.exports = function(app) {
             }
             // After user row created...
         ).then(function(user) {
-            // Create and associate co  ntact list.
-            // Create and associate contacts to contacts list.
-            user.createContactlist({}).then(function(contactlist) {
-                emailArray.forEach(function(email) {
-                    contactlist.createContact({
-                        email: email
+                // Create and associate co  ntact list.
+                // Create and associate contacts to contacts list.
+                user.createContactlist({}).then(function(contactlist) {
+                    emailArray.forEach(function(email) {
+                        contactlist.createContact({
+                            email: email
+                        });
                     });
                 });
-            });
-            // Create and associate wishlist.
-            user.createWishlist({
-                title: attribute.wishlistTitle,
-                category: attribute.wishlistCategory
-            });
+                // Create and associate wishlist.
+                user.createWishlist({
+                    title: attribute.wishlistTitle,
+                    category: attribute.wishlistCategory
+                });
+            }
+            // Send list to API's
+        ).then(function() {
+            // send req.body.list to API
+            console.log("API: " + attribute.wishListItem);
+
+
         }).then(function() {
             res.end();
         });

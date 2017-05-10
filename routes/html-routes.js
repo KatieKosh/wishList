@@ -11,8 +11,6 @@ var env = {
     AUTH0_CALLBACK_URL: 'http://localhost:8080/callback'
 };
 
-var ebayApi = require("../helpers/ebay.js");
-var walmartApi = require("../helpers/walmart.js");
 
 // Routes
 module.exports = function(app) {
@@ -29,7 +27,7 @@ module.exports = function(app) {
         res.render('login', { env: env });
     });
 
-    app.get('/logout', function(req, res){
+    app.get('/logout', function(req, res) {
         // For the logout page, we don't need to render a page, we just want the user to be logged out when they hit this page. We'll use the ExpressJS built in logout method, and then we'll redirect the user back to the homepage.
         req.logout();
         res.redirect('/');
@@ -51,20 +49,6 @@ module.exports = function(app) {
 
     app.get("/final", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/final.html"));
-    });
-
-    // data routes - loads walmart, ebay & amazon JSON data
-
-    app.get("/api/ebay", function(req, res) {
-        ebayApi(function(ebaySorted) {
-            res.json(ebaySorted[0]);
-        });
-    });
-
-    app.get("/api/walmart", function(req, res) {
-        walmartApi(function(walmartSorted) {
-            res.json(walmartSorted[0]);
-        });
     });
 
 };
