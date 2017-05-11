@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href=>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <title>CMS - Express</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="css/styles.css" media="screen" title="no title"> -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- JS script for this page. -->
+    <script src="./js/db-test.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet">
+
+
+    <style>
+        body {
+            background-image: url("image/wishList.jpg");
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        h1 {
+
+            font-family: 'Homemade Apple', cursive;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 125px;
+            margin-top: 110px;
+            color: white;
+            padding-bottom: 50px;
+            border-bottom: 2px solid white;
+            text-shadow: 15px 2px black;
+        }
+
+
+
+        .btn-default {
+            color: #ffffff;
+            border-color: black;
+            background-color: black;
+        }
+
+        .btn-success {
+            color: #ffffff;
+            background-color: black;
+            border-color: black;
+        }
+
+        .btn-default {
+            color: #ffffff;
+            border-color: black;
+            background-color: black;
+            margin-left: 200px;
+            border: 2px solid white;
+        }
+
+
+        .btn-success {
+            color: #ffffff;
+            background-color: black;
+            border: 1px solid white;
+            margin-top: 10px;
+        }
+
+        .form-group {
+            margin-top: 50px;
+            background-color: rgba(128, 128, 128, 0.3);
+            padding: 50px;
+            border-radius: 15px;
+            border: 2px solid white;
+            margin-bottom: 100px;
+            width: 700px;
+            /*height: 1350px;*/
+        }
+
+        label {
+            text-align: center;
+            font-size: 40px;
+            font-family: 'Love Ya Like A Sister', cursive;
+            color: black;
+        }
+
+        .title {
+            color: black;
+        }
+
+        #wishList {
+            font-size: 50px;
+            text-align: center;
+            color: black;
+            font-family: 'Love Ya Like A Sister', cursive;
+            background-color: white;
+        }
+
+        #giftPic {
+
+            float: left;
+        }
+
+        #giftExplanation {
+            color: black;
+            font-size: 15px;
+        }
+
+
+        #giftTitle {
+            font-family: 'Love Ya Like A Sister', cursive;
+            color: black;
+            font-size: 35px;
+            float: left;
+            padding-right: 30px;
+        }
+
+        #backgroundColor {
+
+            background-color: white;
+        }
+
+
+        .checkboxKeep {
+            font-size: 15px;
+            float: left;
+            font-family: 'Love Ya Like A Sister', cursive;
+            padding-right: 40px;
+        }
+
+        .checkboxDelete {
+            font-size: 20px;
+            float: left;
+            font-size: 15px;
+            font-family: 'Love Ya Like A Sister', cursive;
+        }
+
+        button {
+            font-family: 'Love Ya Like A Sister', cursive;
+            margin-top: 40px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+<div class="container">
+    <!--Testing Email Retrieval-->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Emails Test</div>
+                <div class="panel-body email-container">
+                    <p>Assumes authenticated. User id is passed as request body.</p>
+                    <button class="btn btn-primary get-emails">Get Emails!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /testing email retrieval -->
+
+    <!-- Testing Items Display-->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Items Test</div>
+                <div class="panel-body items-container">
+                    <p>Assumes authenticated. User id is passed as request body.</p>
+                    <button class="btn btn-primary get-items">Get Items!</button>
+                    <!-- Basic structure of an items box.-->
+                    <!--<div class="well well-lg">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="" width=200>
+                            </div>
+                            <div class="col-sm-9">
+                                <h3 class="item-name">Name</h3>
+                                <p class="item-price">$42</p>
+                                <a class="item-url" href="">Link to Item :O</a>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!-- /basic items box-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Testing items display-->
+    
+    <div class="row"></div>
+    <div class="row"></div>
+</div>
+</body>
+
+</html>
