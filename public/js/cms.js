@@ -46,6 +46,7 @@ $(document).ready(function() {
         };
 
         submitPost(userList);
+        submitList(userList.list);
         console.log("working");
     }
 
@@ -54,5 +55,9 @@ $(document).ready(function() {
         $.post("/api/cms", userList, function() {
             window.location.href = "/posts";
         });
+    }
+
+    function submitList(userList) {
+        $.post("/api/ebay", userList.list);
     }
 });

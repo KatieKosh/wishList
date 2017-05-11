@@ -10,11 +10,12 @@ module.exports = function(app) {
 
     // data routes - loads walmart, ebay & amazon JSON data
 
-    app.get("/api/ebay", function(req, res) {
-        ebayApi(function(ebaySorted) {
-            res.json(ebaySorted[0]);
-        });
-    });
+    // app.get("/api/ebay", function(req, res) {
+    //     console.log(req.body);
+    //     ebayApi(function(ebaySorted) {
+    //         res.json(ebaySorted[0]);
+    //     });
+    // });
 
     app.get("/api/walmart", function(req, res) {
         walmartApi(function(walmartSorted) {
@@ -22,10 +23,10 @@ module.exports = function(app) {
         });
     });
 
-    app.post("/api/cms", function(req, res) {
-        console.log("Data-api-route req.body: " + req.body);
-        userSearch = req.body.list;
-    });
+    // app.post("/api/cms", function(req, res) {
+    //     console.log("Data-api-route req.body: " + req.body);
+    //     userSearch = req.body.list;
+    // });
 
 
 

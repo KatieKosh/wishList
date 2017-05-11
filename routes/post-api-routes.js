@@ -45,7 +45,7 @@ module.exports = function(app) {
     // Initial Creation Route. Create rows from user input.S
     // Change pointer as neccessary.
     app.post("/api/cms", function(req, res) {
-        console.log("post-api-routes req.body: " + req.body);
+        console.log(req.body);
         // Repackage request body for readability
         var attribute = {
             userName: req.body.name,
@@ -61,35 +61,43 @@ module.exports = function(app) {
 
         // Create user row, assign unique authO ID
         db.User.create({
-                authId: attribute.userAuthId,
-                name: attribute.userName
-            }
-            // After user row created...
-        ).then(function(user) {
-                // Create and associate co  ntact list.
-                // Create and associate contacts to contacts list.
-                user.createContactlist({}).then(function(contactlist) {
-                    emailArray.forEach(function(email) {
-                        contactlist.createContact({
-                            email: email
+                    authId: attribute.userAuthId,
+                    name: attribute.userName
+                }
+                // After user row created...
+            ).then(function(user) {
+                    // Create and associate co  ntact list.
+                    // Create and associate contacts to contacts list.
+                    user.createContactlist({}).then(function(contactlist) {
+                        emailArray.forEach(function(email) {
+                            contactlist.createContact({
+                                email: email
+                            });
                         });
                     });
+                    // Create and associate wishlist.
+                    user.createWishlist({
+                        title: attribute.wishlistTitle,
+                        category: attribute.wishlistCategory
+                    });
+                }
+                // Send list to API's
+            ).then(function(list) {
+                // send req.body.list to API
+                console.log("API: " + attribute.wishListItem);
+                var wList = attribute.wishListItem;
+
+                app.get("/api/ebay", function(req, res) {
+                    ebayApi(wList, function(ebaySortedArray) {
+                        res.json(ebaySortedArray);
+                    });
                 });
-                // Create and associate wishlist.
-                user.createWishlist({
-                    title: attribute.wishlistTitle,
-                    category: attribute.wishlistCategory
-                });
-            }
-            // Send list to API's
-        ).then(function() {
-            // send req.body.list to API
-            console.log("API: " + attribute.wishListItem);
 
 
-        }).then(function() {
-            res.end();
-        });
+            })
+            .then(function() {
+                res.end();
+            });
     });
 
     // Item adding route
