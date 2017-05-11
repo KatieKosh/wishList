@@ -30,9 +30,9 @@ module.exports = function(app) {
                 authId: authId
             },
             include: [{
-                model: Wishlist,
+                model: db.Wishlist,
                 include: [{
-                    model: Item
+                    model: db.Item
                 }]
             }]
         }).then(function(user){
