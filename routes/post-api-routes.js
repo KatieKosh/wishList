@@ -22,6 +22,25 @@ module.exports = function(app) {
     // GET, POST, PUT & DELETE routes go here
     // req.user.id is the unique id of a user. user as auth ID
 
+    // Retrieve session user's contact list
+    // Currently using a post to carry a body for authentication. We can use a get if we have a way to identify the current session user.
+    app.post("/api/emails", function (req, res) {
+        // Tentative authentication
+        var authId = req.body.authId;
+
+        db.User.findAll({
+            where: {authId: authId},
+            include: [{
+                model: db.Contactlist,
+                include: [{
+                    model: db.Contact
+                }]
+            }]
+        }).then(function(contact){
+            res.json(contact);
+        });
+    });
+
     // Route to return all items as json.
     app.post("/api/useritems", function(req, res) {
         // Change as necessary
