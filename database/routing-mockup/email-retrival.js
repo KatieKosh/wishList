@@ -10,9 +10,9 @@ module.exports = function(app) {
         db.User.findAll({
             where: {authId: authId},
             include: [{
-                model: Contactlist,
+                model: db.Contactlist,
                 include: [{
-                    model: Contact
+                    model: db.Contact
                 }]
             }]
         }).then(function(contact){
