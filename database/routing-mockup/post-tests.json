@@ -55,5 +55,29 @@
 }
 
 {
+	"userId": "nodice",
+    "name": "My hair clippings",
+    "salePrice": "1235",
+    "productUrl": "doabl.com",
+    "productImg": "hihat.jpg"
+}
+
+{
+	"userId": "nodice",
+    "name": "My hair clippings",
+    "salePrice": "1235",
+    "productUrl": "doabl.com",
+    "productImg": "hihat.jpg"
+}
+
+{
+	"userId": "nodice",
+    "name": "My hair clippings",
+    "salePrice": "1235",
+    "productUrl": "doabl.com",
+    "productImg": "hihat.jpg"
+}
+
+{
 	"authId" : "nodice"
 }
