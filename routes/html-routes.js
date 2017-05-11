@@ -51,4 +51,8 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/final.html"));
     });
 
+    app.get("/db-test", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/db-test.html"))
+    });
+
 };
