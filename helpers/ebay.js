@@ -1,6 +1,7 @@
 var request = require("request");
 var _ = require("underscore");
 var orderBy = require("lodash.orderby");
+var Promise = require('promise');
 
 
 
@@ -57,7 +58,7 @@ var ebayApi = function(wList, cb) {
             // cb(ebaySortedArray);
             // return ebaySortedArray;
         });
-
+        console.log("oh no robots");
         // ebaySortedArray.push(ebaySorted);
         // cb(ebaySortedArray);
         // console.log("67");
@@ -65,7 +66,7 @@ var ebayApi = function(wList, cb) {
         // return ebaySortedArray;
 
     }
-    cb(ebaySortedArray);
+    // cb(ebaySortedArray);
 
 };
 
