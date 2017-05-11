@@ -51,6 +51,7 @@ $(document).ready(function() {
     }
 
     // Submits a new post and brings user to blog page upon completion
+    // Check promise usage here. 
     function submitPost(userList) {
         $.post("/api/cms", userList, function() {
             window.location.href = "/posts";

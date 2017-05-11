@@ -1,67 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=1, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Homemade+Apple" rel="stylesheet">
 
+<head>
+    <meta charset="UTF-8">
+    <title>Blog - Express</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet">
+    <!--<script src="/path/to/masonry.pkgd.min.js"></script>-->
+    <script>
+        $(document).ready(function() {
+            $("#myModal").modal();
+        });
+    </script>
 
 <style>
 
 h1 {
-			font-family: 'Love Ya Like A Sister', cursive;
-			text-align: center;
-			font-size: 75px;
-			margin-top: 125px;
+
+font-size: 40px;
+color: #2c3e50;
+/*font-family: 'Homemade Apple', cursive;*/
+text-align: center;
+font-family: 'Love Ya Like A Sister', cursive;
+border-bottom: 2px solid white;
 }
-
-    body {
-      height: auto;
-      background-image: url("image/wishList.jpg");
-      background-size: cover;
-      font-family: 'Homemade Apple', cursive;
-      color: white;
-      /*border: 25px solid white;
-      font-size: 20px;*/
-}
-
-h2 {
-  font-family: 'Homemade Apple', cursive;
-  text-align: center;
-  font-size: 75px;
-  margin-top: 105px;
-
-
-}
-
 
 button {
-font-family: 'Love Ya Like A Sister', cursive;
-margin-top: 30px;
-margin-left: 600px;
-padding: 25px;
-font-size: 30px;
+
+background-color:  black;
 border-radius: 15px;
-background-color: #1a242f;
-color: white;
+padding: 17px;
+margin-left: 430px;
+font-size: 24px;
+
 }
+
+
+#myModal {
+font-size: 25px;
+background-image: url("image/wishList.jpg") !important;
+background-size: cover;
+font-family: 'Love Ya Like A Sister', cursive;
+
+}
+
+
+.glyphicon-star {
+
+color: #2c3e50;
+
+}
+
+#logout {
+font-size: 30px;
+margin-left: 500px;
+margin-left: 650px;
+margin-top: 180px
+
+}
+
+
+
+h2 {
+    font-family: 'Homemade Apple', cursive;
+    text-align: center;
+    font-size: 80px;
+    margin-top: 200px;
+    /*padding-bottom: 70px;*/
+
+
+
+
+}
+
+body {
+    height: auto;
+    background-image: url("image/wishList.jpg");
+    background-size: cover;
+    font-family: 'Homemade Apple', cursive;
+    color: white;
+    /*border: 25px solid white;*/
+    font-size: 20px;
+}
+
+
+
+u {
+text-decoration: none;
+border-bottom: 2px solid white;
+font-size: 80px;
+
+}
+
+////////////////
+#space {
+  background: #003366;
+  width: 100%;
+  height: 100%;
+  -webkit-animation-name: starField;
+  -webkit-animation-duration: 20s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0s;
+  -webkit-animation-timing-function: linear;
+  animation-name: starField;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-delay: 0s;
+  animation-timing-function: linear;
+  -moz-animation-name: starField;
+  -moz-animation-duration: 30s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-delay: 0s;
+  -moz-animation-timing-function: linear;
+  -o-animation-name: starField;
+  -o-animation-duration: 30s;
+  -o-animation-iteration-count: infinite;
+  -o-animation-delay: 0s;
+  -o-animation-timing-function: linear;
+  z-index:-10
+}
+
+@keyframes starField {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
+    -moz-filter: hue-rotate(0deg);
+    -o-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+    -moz-filter: hue-rotate(360deg);
+    -o-filter: hue-rotate(360deg);
+  }
+}
+
+#space,
+.stars {
+  overflow: hidden;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background:cover;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -2;
+}
+
+.stars {
+  background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: zoom 5s infinite;
+  opacity: 0;
+}
+
+.stars:nth-child(1) {
+  background-position: 50% 50%;
+  animation-delay: 0s;
+}
+
+.stars:nth-child(2) {
+  background-position: 20% 60%;
+  animation-delay: 1s;
+}
+
+.stars:nth-child(3) {
+  background-position: -20% -30%;
+  animation-delay: 2s;
+}
+
+.stars:nth-child(4) {
+  background-position: 40% -80%;
+  animation-delay: 3s;
+}
+
+.stars:nth-child(5) {
+  background-position: -20% 30%;
+  animation-delay: 4s;
+}
+
+@keyframes zoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+    animation-timing-function: ease-in;
+  }
+  85% {
+    opacity: 1;
+    transform: scale(2.8);
+    animation-timing-function: linear;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3.5);
+  }
+}
+
 
 
 </style>
-
-
-
-  <title>Document</title>
 </head>
+
 <body>
 
-<h1>[Submitted]</h1>
+<div id="space" >
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+  </div>
 
-<h2>May all Your Wishes <br> Come True!</h2>
 
 
-<button type="button" onclick="location.href='./logout'" id="logout"class="btn btn-primary active">Log Out</button>
+
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+                </div>
+                <div class="modal-body">
+                      <h1>Submitted</h1>
+                </div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+                <div class="glyphicon glyphicon-star"></div>
+
+
+                <div class="modal-footer">
+                    <div id=modalButton>
+                        <button type="buttonModal" class="btn1 btn-default" data-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<h2>May All Your Wishes</h2><h2><u>Come True</u></h2>
+
+<button onclick="location.href='./logout'" id="logout">Log Out</button>
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
 
 </body>
-</html>

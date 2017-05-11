@@ -51,4 +51,9 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/final.html"));
     });
 
+    // For testing database functions to front end
+    app.get("/db-test", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/db-test.html"))
+    });
+
 };
