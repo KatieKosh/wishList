@@ -3,6 +3,8 @@ var db = require("../models");
 var ebayApi = require("../helpers/ebay.js");
 var walmartApi = require("../helpers/walmart.js");
 
+var ebayFinalArray = [];
+
 // Helper functions: Turn Email comma lists into array of json-like objects to pass into Sequelize
 // Expects string of emails, separated by commas
 // Returns trimmed array of emails.
@@ -24,19 +26,19 @@ module.exports = function(app) {
 
     // Retrieve session user's contact list
     // Currently using a post to carry a body for authentication. We can use a get if we have a way to identify the current session user.
-    app.post("/api/emails", function (req, res) {
+    app.post("/api/emails", function(req, res) {
         // Tentative authentication
         var authId = req.body.authId;
 
         db.User.findAll({
-            where: {authId: authId},
+            where: { authId: authId },
             include: [{
                 model: db.Contactlist,
                 include: [{
                     model: db.Contact
                 }]
             }]
-        }).then(function(contact){
+        }).then(function(contact) {
             res.json(contact);
         });
     });
@@ -108,6 +110,7 @@ module.exports = function(app) {
 
                 app.get("/api/ebay", function(req, res) {
                     ebayApi(wList, function(ebaySortedArray) {
+                        ebayFinalArray = ebaySortedArray;
                         res.json(ebaySortedArray);
                     });
                 });
