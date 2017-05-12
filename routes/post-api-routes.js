@@ -69,7 +69,7 @@ module.exports = function(app) {
     // Initial Creation Route. Create rows from user input.S
     // Change pointer as neccessary.
     app.post("/api/cms", ensureLoggedIn, function(req, res) {
-        console.log("post-api-routes req.body: " + req.body);
+        // console.log("post-api-routes req.body: " + req.body);
         // Repackage request body for readability
         var attribute = {
             userName: req.body.name,
@@ -89,7 +89,7 @@ module.exports = function(app) {
             }
             // After user row created...
         ).then(function(user) {
-            // Create and associate co  ntact list.
+            // Create and associate contact list.
             // Create and associate contacts to contacts list.
             user.createContactlist({}).then(function(contactlist) {
                         emailArray.forEach(function(email) {
@@ -104,31 +104,28 @@ module.exports = function(app) {
                         });
                     }
                     // Send list to API's
-                ).then(function(list) {
-                        // send req.body.list to API
-                        console.log("API: " + attribute.wishListItem);
-                        var wList = attribute.wishListItem;
-
-                        app.get("/api/ebay", function(req, res) {
-                            ebayApi(wList, function(ebaySortedArray) {
-                                ebayFinalArray = ebaySortedArray;
-                                res.json(ebaySortedArray);
-                            });
-                        });
-                        // Create and associate wishlist.
-                        user.createWishlist({
-                            title: attribute.wishlistTitle,
-                            category: attribute.wishlistCategory
-                        });
-                    }
-                    // Send list to API's
                 ).then(function() {
-                    // send req.body.list to API
-                    console.log("API: " + attribute.wishListItem);
-                })
-                .then(function() {
                     res.end();
-                });
+                        // send req.body.list to API
+                        // console.log("API: " + attribute.wishListItem);
+                        // var wList = attribute.wishListItem;
+
+                        //     ebayApi(wList, function(ebaySortedArray) {
+                        //         console.log("ebaySortedArray ", ebaySortedArray);
+                        //         // ebayFinalArray = ebaySortedArray;
+                        //         res.json(ebaySortedArray);
+                        //     });
+            });
+    });
+
+        app.post("/api/ebay", ensureLoggedIn, function(req, res) {
+            console.log("ebay API hit");
+            var wList = req.body.wList;
+
+            ebayApi(wList, function(ebaySortedArray){
+                console.log("ebaySorted Array: ", ebaySortedArray);
+                res.json(ebaySortedArray);
+            });
         });
 
         // Item adding route

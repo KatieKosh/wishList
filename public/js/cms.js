@@ -46,7 +46,7 @@ $(document).ready(function() {
         };
 
         submitPost(userList);
-        submitList(userList.list);
+        // submitList(userList.list);
         console.log("working");
     }
 
@@ -68,18 +68,25 @@ $(document).ready(function() {
 
     function submitPost(userList) {
         // Post the userlist data to db, then gather the data from Ebay/Walmart API, return results as json
-        $.post("/api/cms", userList).done(function(apiArray){
-            console.log(apiArray);
-            for(var i = 0; i < apiArray.length; i++) {
-                $.post("/api/items", apiArray[i]).done(function(){
-                    console.log("apiArray[i] ", apiArray[i]);
-                    console.log("item added..?");
-                });
-            }
-        }).done(function(){
-            window.location.href = "/posts";
-        });
-    }
+    //     $.post("/api/cms", userList).done(function(apiArray){
+    //         console.log("just apiArray, ebay response:", apiArray);
+    //         for(var i = 0; i < apiArray.length; i++) {
+    //             console.log("apiArray[i] ", apiArray[i]);
+    //             $.post("/api/items", apiArray[i]).done(function(){
+    //                 console.log("item added..?");
+    //             });
+    //         }
+    //     }).done(function(){
+    //         // window.location.href = "/posts";
+    //         console.log("sending to /posts cat");
+    //     });
+    // }
+
+    $.post("/api/cms", userList).done(function(){
+        console.log("User and WL init in DB");
+    }).done(function(){
+        
+    });
 
 });
 
