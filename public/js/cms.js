@@ -1,10 +1,11 @@
 $(document).ready(function() {
     // Getting jQuery references to the post body, title, form, and author select
     var listInput = $("#list");
-    var titleInput = $("#title");
-    var emails = $("#emails");
+    var titleInput = $("#listTitle");
+    var emailInput = $("#emails");
+    var categoryInput = $("#category");
     var cmsForm = $("#cms");
-    // var authorSelect = $("#author");
+
     // Adding an event listener for when the form is submitted
     $(cmsForm).on("submit", handleFormSubmit);
 
@@ -18,31 +19,39 @@ $(document).ready(function() {
     // A function for handling what happens when the form to create a new post is submitted
     function handleFormSubmit(event) {
         event.preventDefault();
+        console.log(titleInput.val());
         console.log(listInput.val());
+        console.log(emailInput.val());
+        console.log(categoryInput.val());
 
         // Wont submit the post if we are missing a body, title, or author
-        if (!titleInput.val().trim() || !bodyInput.val().trim() || !authorSelect.val()) {
+        if (!titleInput.val().trim() || !listInput.val().trim() || !emailInput.val()) {
             return;
         }
         // Constructing a newPost object to hand to the database
-        var userList = ({
+        var userList = {
             title: titleInput
                 .val()
                 .trim(),
             list: listInput
                 .val()
                 .trim(),
-            emails: bodyInput
+            emails: emailInput
                 .val()
                 .trim(),
-        });
+            category: categoryInput
+
+                .val()
+                .trim(),
+        };
 
         submitPost(userList);
+        console.log("working");
     }
 
     // Submits a new post and brings user to blog page upon completion
     function submitPost(userList) {
-        $.post("/api/posts", userList, function() {
+        $.post("/api/cms", userList, function() {
             window.location.href = "/posts";
         });
     }

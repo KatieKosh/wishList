@@ -1,39 +1,42 @@
 {
-    "name": "wish_list",
-    "version": "1.0.0",
-    "description": "whish list",
-    "main": "server.js",
-    "dependencies": {
-        "body-parser": "^1.17.1",
-        "cookie-parser": "^1.4.3",
-        "dotenv": "^4.0.0",
-        "express": "^4.15.2",
-        "express-session": "^1.15.2",
-        "jade": "^1.11.0",
-        "morgan": "^1.8.1",
-        "lodash.orderby": "^4.6.0",
-        "mysql": "^2.13.0",
-        "passport": "^0.3.2",
-        "passport-auth0": "^0.6.0",
-        "path": "^0.12.7",
-        "request": "^2.81.0",
-        "sendmail": "^1.1.1",
-        "sequelize": "^3.30.4",
-        "underscore": "^1.8.3"
-    },
-    "devDependencies": {},
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/KatieKosh/wishList.git"
-    },
-    "author": "katie michael zach jeff",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/KatieKosh/wishList/issues"
-    },
-    "homepage": "https://github.com/KatieKosh/wishList#readme"
+  "name": "wish_list",
+  "version": "1.0.0",
+  "description": "whish list",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "connect-ensure-login": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "jade": "^1.11.0",
+    "lodash.orderby": "^4.6.0",
+    "morgan": "^1.8.1",
+    "mysql": "^2.13.0",
+    "node-mailjet": "^3.0.6",
+    "nodemailer": "^4.0.1",
+    "passport": "^0.3.2",
+    "passport-auth0": "^0.6.0",
+    "path": "^0.12.7",
+    "request": "^2.81.0",
+    "sendmail": "^1.1.1",
+    "sequelize": "^3.30.4",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KatieKosh/wishList.git"
+  },
+  "author": "katie michael zach jeff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KatieKosh/wishList/issues"
+  },
+  "homepage": "https://github.com/KatieKosh/wishList#readme"
 }
