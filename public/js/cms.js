@@ -46,6 +46,7 @@ $(document).ready(function() {
         };
 
         submitPost(userList);
+        submitList(userList.list);
         console.log("working");
     }
 
@@ -79,6 +80,7 @@ $(document).ready(function() {
             window.location.href = "/posts";
         });
     }
+
 });
 
 /*
@@ -100,3 +102,4 @@ $(document).ready(function() {
 }
 ]
 */
+
