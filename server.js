@@ -77,49 +77,39 @@ require("./routes/list-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our express app
 
+
+
+
 db.sequelize.sync({force: false}).then(function() {
 	app.listen(PORT, function() {
 		console.log("App listening on PORT " + PORT);
 	});
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Here is working code to send emails... oh boy!
 
 // const sendmail = require('sendmail')();
 
 // sendmail({
-// 	from: 'nodewishlist@mail.com',
-// 	to: 'nodewishlist@mail.com',
-// 	subject: 'test sendmail',
-// 	html: 'Mail of test sendmail ',
-// }, function(err, reply) {
-// 	console.log(err && err.stack);
-// 	console.dir(reply);
+//     from: 'nodewishlist@yandex.com',
+//     to: 'zazador@gmail.com',
+//     subject: 'test sendmail',
+//     html: 'Mail of test sendmail ',
+//   }, function(err, reply) {
+//     console.log(err && err.stack);
+//     console.dir(reply);
 // });
-
-var apiKey = process.env.MJ_APIKEY_PUBLIC,
-apiSecret = process.env.MJ_APIKEY_PRIVATE;
-
-var Mailjet = require('node-mailjet').connect(apiKey, apiSecret);
-
-
-var sendEmail = Mailjet.post('send');
-
-var emailData = {
-	'FromEmail': 'zazador@gmail.com',
-	'FromName': 'My Name',
-	'Subject': 'Test with the NodeJS Mailjet wrapper',
-	'Text-part': 'Hello NodeJs !',
-	'Recipients': [{'Email': 'zazador@gmail.com'}],
-}
-
-sendEmail
-.request(emailData)
-.then()
-.catch();
-
-
-
-
-
-

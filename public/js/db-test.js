@@ -2,7 +2,7 @@ $(document).ready(function () {
     // On click handler for get-emails button.
     $(".get-emails").click(function () {
         // Testing AuthId
-        var authId = { authId: "nodice" };
+        var authId = { authId: "helloworld" };
 
         $.post("/api/emails", authId).done(function (contactsEmail) {
             var emailList = [];
