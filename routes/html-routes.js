@@ -8,7 +8,7 @@ var passport = require('passport');
 var env = {
     AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
     AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
-    AUTH0_CALLBACK_URL: 'http://localhost:8080/callback'
+    AUTH0_CALLBACK_URL: 'https://ancient-citadel-52749.herokuapp.com/callback'
 };
 
 
