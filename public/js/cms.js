@@ -53,7 +53,15 @@ $(document).ready(function() {
     // Check promise usage here. 
     function submitPost(userList) {
         $.post("/api/cms", userList, function() {
-            window.location.href = "/posts";
+            // window.location.href = "/posts";
+            // API EBAY call, will respond w/ json
+        }).then(function(ebayarray){
+            $.post("/api/items", ebayarray, function () {
+                // adding data to db
+                // when done..
+            }).done(function(){
+                // window.location.href = "/posts";
+            });
         });
     }
 });
