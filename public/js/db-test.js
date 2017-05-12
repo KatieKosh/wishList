@@ -1,10 +1,8 @@
 $(document).ready(function () {
     // On click handler for get-emails button.
     $(".get-emails").click(function () {
-        // Testing AuthId
-        var authId = { authId: "helloworld" };
 
-        $.post("/api/emails", authId).done(function (contactsEmail) {
+        $.post("/api/emails").done(function (contactsEmail) {
             var emailList = [];
             var contactList = contactsEmail[0].Contactlist.Contacts;
             for (var i = 0; i < contactList.length; i++) {
@@ -21,12 +19,11 @@ $(document).ready(function () {
 
     // On click handler for get-items button.
     // This is for example. This can be done on load, etc.
-    $(".get-items").click(function () {
-        // Testing AuthId
-        var authId = { authId: "nodice" };
+    // $(".get-items").click(function () {
 
-        // Again, using post for determining which user is logged in.
-        $.post("/api/useritems", authId).done(function (userItems) {
+    // Again, using post for determining which user is logged in.
+    function retrieveItems() {
+        $.post("/api/useritems").done(function (userItems) {
             var itemsArray = userItems[0].Wishlists[0].Items;
             // console.log("itemsArray ", itemsArray);
             for (var i = 0; i < itemsArray.length; i++) {
@@ -44,9 +41,9 @@ $(document).ready(function () {
                 itemsBoxDOM.append(itemsDataDOM);
                 // Appending to the html.
                 $(".items-container").append(itemsBoxDOM);
-
             }
-
         });
-    });
+    }
+
+    retrieveItems();
 });
