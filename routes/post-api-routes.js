@@ -5,15 +5,13 @@ var walmartApi = require("../helpers/walmart.js");
 var passport = require('passport');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 
-var ebayFinalArray = [];
-
 // Helper functions: Turn Email comma lists into array of json-like objects to pass into Sequelize
 // Expects string of emails, separated by commas
 // Returns trimmed array of emails.
 function formatEmailList(emailList) {
     var rawList = emailList;
     var rawArray = rawList.split("\n");
-    var returnArray = rawArray.map(function (item) {
+    var returnArray = rawArray.map(function(item) {
         return item.trim();
     });
 
@@ -22,14 +20,14 @@ function formatEmailList(emailList) {
 
 
 // Routes as export
-module.exports = function (app) {
+module.exports = function(app) {
     // GET, POST, PUT & DELETE routes go here
     // req.user.id is the unique id of a user. user as auth ID
 
     // Retrieve session user's contact list
     // Currently using a post to carry a body for authentication. We can use a get if we have a way to identify the current session user.
 
-    app.post("/api/emails", ensureLoggedIn, function (req, res) {
+    app.post("/api/emails", ensureLoggedIn, function(req, res) {
         // Tentative authentication
         var authId = req.user.id;
 
@@ -41,13 +39,13 @@ module.exports = function (app) {
                     model: db.Contact
                 }]
             }]
-        }).then(function (contact) {
+        }).then(function(contact) {
             res.json(contact);
         });
     });
 
     // Route to return all items as json.
-    app.post("/api/useritems", ensureLoggedIn, function (req, res) {
+    app.post("/api/useritems", ensureLoggedIn, function(req, res) {
         // Change as necessary
         var authId = req.user.id;
 
@@ -61,14 +59,14 @@ module.exports = function (app) {
                     model: db.Item
                 }]
             }]
-        }).then(function (user) {
+        }).then(function(user) {
             res.json(user);
         });
     });
 
     // Initial Creation Route. Create rows from user input.S
     // Change pointer as neccessary.
-    app.post("/api/cms", ensureLoggedIn, function (req, res) {
+    app.post("/api/cms", ensureLoggedIn, function(req, res) {
         // console.log("post-api-routes req.body: " + req.body);
         // Repackage request body for readability
         var attribute = {
@@ -84,15 +82,15 @@ module.exports = function (app) {
 
         // Create user row, assign unique authO ID
         db.User.create({
-            authId: attribute.userAuthId,
-            name: attribute.userName
-        }
+                authId: attribute.userAuthId,
+                name: attribute.userName
+            }
             // After user row created...
-        ).then(function (user) {
+        ).then(function(user) {
             // Create and associate contact list.
             // Create and associate contacts to contacts list.
-            user.createContactlist({}).then(function (contactlist) {
-                emailArray.forEach(function (email) {
+            user.createContactlist({}).then(function(contactlist) {
+                emailArray.forEach(function(email) {
                     contactlist.createContact({
                         email: email
                     });
@@ -102,25 +100,27 @@ module.exports = function (app) {
                     title: attribute.wishlistTitle,
                     category: attribute.wishlistCategory
                 });
-            }).then(function () {
+            }).then(function() {
                 res.end();
             });
         });
     });
 
     // Route to call EBAY API
-    app.post("/api/ebay", ensureLoggedIn, function (req, res) {
+    app.post("/api/ebay", ensureLoggedIn, function(req, res) {
         // console.log("ebay API hit");
         var wList = req.body.wList;
 
-        ebayApi(wList, function (ebaySortedArray) {
+        ebayApi(wList, function(ebaySortedArray) {
             // console.log("ebaySorted Array: ", ebaySortedArray);
             res.json(ebaySortedArray);
+            console.log("robots are here!");
+            console.log(ebaySortedArray);
         });
     });
 
     // Item adding route
-    app.post("/api/items", ensureLoggedIn, function (req, res) {
+    app.post("/api/items", ensureLoggedIn, function(req, res) {
         // Repackage names for readability.
         var attribute = {
             userAuthId: req.user.id,
@@ -137,7 +137,7 @@ module.exports = function (app) {
                 authId: attribute.userAuthId
             }
 
-        }).then(function (user) {
+        }).then(function(user) {
             // console.log("Return of first search: ", user);
             // console.log("user id index 0: ", user[0].id);
 
@@ -146,13 +146,13 @@ module.exports = function (app) {
                 where: {
                     UserId: user[0].id
                 }
-            }).then(function (wishlist) {
+            }).then(function(wishlist) {
                 wishlist[0].createItem({
                     name: attribute.itemName,
                     best_price: attribute.itemPrice,
                     source_url: attribute.itemUrl,
                     img_url: attribute.itemImgUrl
-                }).then(function () {
+                }).then(function() {
                     console.log("item added");
                     res.end();
                 });
