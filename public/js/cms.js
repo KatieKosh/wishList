@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Getting jQuery references to the post body, title, form, and author select
     var listInput = $("#list");
     var titleInput = $("#listTitle");
@@ -54,7 +54,7 @@ $(document).ready(function() {
     // Check promise usage here. 
     // function submitPost(userList) {
     //     $.post("/api/cms", userList, function() {
-            
+
     //         // API EBAY call, will respond w/ json
     //     }).then(function(ebayarray){
     //         $.post("/api/items", ebayarray, function () {
@@ -67,26 +67,26 @@ $(document).ready(function() {
     // }
 
     function submitPost(userList) {
-        // Post the userlist data to db, then gather the data from Ebay/Walmart API, return results as json
-    //     $.post("/api/cms", userList).done(function(apiArray){
-    //         console.log("just apiArray, ebay response:", apiArray);
-    //         for(var i = 0; i < apiArray.length; i++) {
-    //             console.log("apiArray[i] ", apiArray[i]);
-    //             $.post("/api/items", apiArray[i]).done(function(){
-    //                 console.log("item added..?");
-    //             });
-    //         }
-    //     }).done(function(){
-    //         // window.location.href = "/posts";
-    //         console.log("sending to /posts cat");
-    //     });
-    // }
-
-    $.post("/api/cms", userList).done(function(){
-        console.log("User and WL init in DB");
-    }).done(function(){
-        
-    });
+        // On submit, adds user information
+        // THen call ebay API
+        $.post("/api/cms", userList).done(function () {
+            console.log("User and WL init in DB");
+        }).done(function () {
+            // Ebay API call.
+            console.log("Post req to Ebay API");
+            var requestBody = { wList: userList.list };
+            $.post("/api/ebay", requestBody).done(function (sortedArray) {
+                // Call to insert items into database.
+                console.log("Return from Ebay API: ", sortedArray);
+                sortedArray.forEach(function(item){
+                    $.post("/api/items", item).done(function(){
+                        console.log("item added!");
+                    });
+                });
+                console.log("done with API call and upload, switching pages...");
+            });
+        });
+    }
 
 });
 
