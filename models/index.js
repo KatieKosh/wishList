@@ -8,17 +8,17 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
-// if (config.use_env_variable) {
-//   var sequelize = new Sequelize(process.env[config.use_env_variable]);
-// } else {
-//   var sequelize = new Sequelize(config.database, config.username, config.password, config);
-// }
+if (config.use_env_variable) {
+  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+} else {
+  var sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
-var sequelize = new Sequelize("mysql://oyy03d2r327md7js:an2pqwib1ht5we07@s54ham9zz83czkff.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/bonirufea9eqfwxf",{
-    logging: false,
-    dialectOptions: {
-        ssl: true
-    }})
+// var sequelize = new Sequelize("mysql://oyy03d2r327md7js:an2pqwib1ht5we07@s54ham9zz83czkff.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/bonirufea9eqfwxf",{
+//     logging: false,
+//     dialectOptions: {
+//         ssl: true
+//     }});
 
 fs
   .readdirSync(__dirname)
