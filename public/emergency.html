@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href=>
+  <title>Document</title>
+  <meta charset="UTF-8">
+  <title>CMS - Express</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="css/styles.css" media="screen" title="no title"> -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Homemade+Apple" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet">
+
+
+  <style>
+
+    body  {
+      background-image: url("image/wishList.jpg");
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    h1 {
+
+      font-family: 'Homemade Apple', cursive;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 125px;
+      margin-top: 110px;
+      color: white;
+      padding-bottom: 50px;
+      border-bottom: 2px solid white;
+      text-shadow: 15px 2px black;
+
+    }
+
+
+
+    .btn-default {
+     color: #ffffff;
+     border-color: black;
+     background-color: black;
+   }
+
+   .btn-success {
+     color: #ffffff;
+     background-color: black;
+     border-color: black;
+   }
+
+   .btn-default {
+    color: #ffffff;
+    border-color: black;
+    background-color: black;
+    margin-left: 200px;
+    border: 2px solid white;
+  }
+
+
+  .btn-success {
+    color: #ffffff;
+    background-color: black;
+    border: 1px solid white;
+    margin-top: 10px;
+  }
+
+  .form-group {
+    margin-top: 50px;
+    background-color: rgba(128,128,128,0.3);
+    padding: 50px;
+    border-radius: 15px;
+    border: 2px solid white;
+    margin-bottom: 100px;
+    width: 700px;
+    /*height: 1350px;*/
+
+  }
+
+  label {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Love Ya Like A Sister', cursive;
+    color: black;
+  }
+
+  .title {
+    color: black;
+
+  }
+
+  #wishList {
+    font-size: 50px;
+    text-align: center;
+    color: black;
+    font-family: 'Love Ya Like A Sister', cursive;
+    background-color: white;
+
+
+  }
+
+  #giftPic {
+
+    float: left;
+
+  }
+
+  #giftExplanation {
+    color: black;
+    font-size: 15px;
+  }
+
+
+  #giftTitle {
+    font-family: 'Love Ya Like A Sister', cursive;
+    color: black;
+    font-size: 35px;
+    float: left;
+    padding-right: 30px;
+
+  }
+
+  #backgroundColor {
+
+    background-color: white;
+
+  }
+
+
+  .checkboxKeep {
+    font-size: 15px;
+    float: left;
+    font-family: 'Love Ya Like A Sister', cursive;
+    padding-right: 40px;
+
+  }
+
+  .checkboxDelete
+  {
+    font-size: 20px;
+    float: left;
+    font-size: 15px;
+    font-family: 'Love Ya Like A Sister', cursive;
+  }
+
+  button {
+    font-family: 'Love Ya Like A Sister', cursive;
+    margin-top: 40px;
+
+
+  }
+
+
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="container">
+    <h1>Wish List</h1>
+
+
+    <div class="col-md-6 col-md-offset-3">
+      <form id="cms">
+        <div class="form-group">
+
+          <div id="backgroundColor">
+
+
+
+
+            <div id="giftTitle"><p><u>Snuggie Soft Fleece Blanket with Sleeves</u></p>
+              <div id = "price"><h4>$19.99</h4></div>
+              <div id="giftPic"><img src="image/sunggie.png" height="150" width="260"></a>
+              </div>
+              <div id="giftExplanation"<p>The Blanket That Has Sleeves!
+              Made With Super Soft Fleece.
+              One Size Fits All Adults ( 71 inches x 54 inches )
+              Machine Washable.
+              Great For All Occasions Including Indoor And Outdoor Activities</p>
+              </p>
+            </div>
+            <div class="checkboxKeep">
+              <input type="checkbox" value="">Keep</div>
+              <div class="checkboxDelete">
+                <input type="checkbox" value="">Delete</div>
+
+                <hr noshade size=4>
+              </div>
+
+              <div id="giftTitle"><p><u>PUENTE Pro Cruiser Complete Skateboard 31 Inch</u></p>
+                  <div id = "price"><h4>$35.99</h4></div>
+                <div id="giftPic"><img src="image/skateboard.png" height="175" width="300"></div>
+                <div id="giftExplanation"><p>Material: Maple Wood, PU Wheels, Alloy Truck, ABEC-9 Bearings
+                Deck Size: 31"(787mm) x 8"(203mm)
+                  Max Load-Bearing: 100kgs(220lbs)
+                  Pattern: Heat Transfer(which was printed onto the board,not a sticker.)
+                  Great combination of exercise and fun, totally portable, and ideal for Primary/Intermediate level</p></p></div>
+
+                <div class="checkboxKeep">
+                  <input type="checkbox" value="">Keep</div>
+
+                  <div class="checkboxDelete">
+                    <input type="checkbox" value="">Delete</div>
+
+                    <hr noshade size=4 >
+                  </div>
+
+
+
+                  <div id="giftTitle"><p><u>Croquet Set</u></p>
+                        <div id = "price"><h4>$57.00</h4></div>
+                    <div id="giftPic"><img src="image/croquet.png" height="175" width="250"></div>
+                    <div id="giftExplanation"<p>25-piece set includes: 6 mallets, 6 balls, 2 end posts, 9 wickets, bag & rulebook
+Mallets: 28-in. length (each), wood
+Balls: 3-in. diameter (each), poly-resin
+Wickets: 5-mm (each), steel </p></div>
+                    <div class="checkboxKeep">
+                      <input type="checkbox" value="">Keep</div>
+
+                      <div class="checkboxDelete">
+                        <input type="checkbox" value="">Delete</div>
+
+                        <hr noshade size=4 >
+                      </div>
+
+
+
+
+                      <div id="giftTitle"><p><u>The Commodore 64 Book</u></p>
+                          <div id = "price"><h4>$1S6.00</h4></div>
+
+                        <div id="giftPic"><img src="image/commodore.png" height="195" width="195"></a></div>
+                        <div id="giftExplanation"<p>This essential guide to the Commodore is the perfect trip down memory lane. Relive some of the classic games such as Wizball and Ghostbusters, plus in-depth interviews with some of the legendary games developers including Ocean Software and Ben Daglish. Packed with industry insight and amazing facts related to this iconic console, The Commodore 64 Book is the ideal resource for all retro lovers.</p></div>
+                        <div class="checkboxKeep">
+                          <input type="checkbox" value="">Keep</div>
+
+                          <div class="checkboxDelete">
+                            <input type="checkbox" value="">Delete</div>
+
+
+
+                            <hr noshade size=4 >
+
+                          </div>
+
+
+                          <button type="button" onclick="location.href='./email'" id="email" class="btn btn-primary active">Send my Wish List to Recipients</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</body>
+
+</html>
