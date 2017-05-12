@@ -5,6 +5,8 @@ var walmartApi = require("../helpers/walmart.js");
 var passport = require('passport');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 
+var ebayFinalArray = [];
+
 // Helper functions: Turn Email comma lists into array of json-like objects to pass into Sequelize
 // Expects string of emails, separated by commas
 // Returns trimmed array of emails.
@@ -26,19 +28,20 @@ module.exports = function(app) {
 
     // Retrieve session user's contact list
     // Currently using a post to carry a body for authentication. We can use a get if we have a way to identify the current session user.
-    app.post("/api/emails", ensureLoggedIn, function (req, res) {
+
+    app.post("/api/emails", ensureLoggedIn, function(req, res) {
         // Tentative authentication
         var authId = req.user.id;
 
         db.User.findAll({
-            where: {authId: authId},
+            where: { authId: authId },
             include: [{
                 model: db.Contactlist,
                 include: [{
                     model: db.Contact
                 }]
             }]
-        }).then(function(contact){
+        }).then(function(contact) {
             res.json(contact);
         });
     });
@@ -66,7 +69,7 @@ module.exports = function(app) {
     // Initial Creation Route. Create rows from user input.S
     // Change pointer as neccessary.
     app.post("/api/cms", ensureLoggedIn, function(req, res) {
-        console.log("post-api-routes req.body: " + req.body);
+        // console.log("post-api-routes req.body: " + req.body);
         // Repackage request body for readability
         var attribute = {
             userName: req.body.name,
@@ -81,73 +84,87 @@ module.exports = function(app) {
 
         // Create user row, assign unique authO ID
         db.User.create({
-            authId: attribute.userAuthId,
-            name: attribute.userName
-        }
-            // After user row created...
-            ).then(function(user) {
-                // Create and associate co  ntact list.
-                // Create and associate contacts to contacts list.
-                user.createContactlist({}).then(function(contactlist) {
-                    emailArray.forEach(function(email) {
-                        contactlist.createContact({
-                            email: email
-                        });
-                    });
-                });
-                // Create and associate wishlist.
-                user.createWishlist({
-                    title: attribute.wishlistTitle,
-                    category: attribute.wishlistCategory
-                });
+                authId: attribute.userAuthId,
+                name: attribute.userName
             }
-            // Send list to API's
-            ).then(function() {
-            // send req.body.list to API
-            console.log("API: " + attribute.wishListItem);
+            // After user row created...
+        ).then(function(user) {
+            // Create and associate contact list.
+            // Create and associate contacts to contacts list.
+            user.createContactlist({}).then(function(contactlist) {
+                        emailArray.forEach(function(email) {
+                            contactlist.createContact({
+                                email: email
+                            });
+                        });
+                        // Create and associate wishlist.
+                        user.createWishlist({
+                            title: attribute.wishlistTitle,
+                            category: attribute.wishlistCategory
+                        });
+                    }
+                    // Send list to API's
+                ).then(function() {
+                    res.end();
+                        // send req.body.list to API
+                        // console.log("API: " + attribute.wishListItem);
+                        // var wList = attribute.wishListItem;
 
-
-        }).then(function() {
-            res.end();
-        });
+                        //     ebayApi(wList, function(ebaySortedArray) {
+                        //         console.log("ebaySortedArray ", ebaySortedArray);
+                        //         // ebayFinalArray = ebaySortedArray;
+                        //         res.json(ebaySortedArray);
+                        //     });
+            });
     });
 
-    // Item adding route
-    app.post("/api/items", ensureLoggedIn, function(req, res) {
-        // Repackage names for readability.
-        var attribute = {
-            userAuthId: req.user.id,
-            itemName: req.body.name,
-            itemPrice: req.body.salePrice,
-            itemUrl: req.body.productUrl,
-            itemImgUrl: req.body.productImg
-        };
+        app.post("/api/ebay", ensureLoggedIn, function(req, res) {
+            console.log("ebay API hit");
+            var wList = req.body.wList;
 
-        // Find userID via AuthID
-        // Using findAll, so index 0 is for grabbing first item.
-        db.User.findAll({
-            where: {
-                authId: attribute.userAuthId
-            }
+            ebayApi(wList, function(ebaySortedArray){
+                console.log("ebaySorted Array: ", ebaySortedArray);
+                res.json(ebaySortedArray);
+            });
+        });
 
-        }).then(function(user) {
-            // console.log("Return of first search: ", user);
-            // console.log("user id index 0: ", user[0].id);
+        // Item adding route
+        app.post("/api/items", ensureLoggedIn, function(req, res) {
+            // Repackage names for readability.
+            var attribute = {
+                userAuthId: req.user.id,
+                itemName: req.body.name,
+                itemPrice: req.body.salePrice,
+                itemUrl: req.body.productUrl,
+                itemImgUrl: req.body.productImg
+            };
 
-
-            db.Wishlist.findAll({
+            // Find userID via AuthID
+            // Using findAll, so index 0 is for grabbing first item.
+            db.User.findAll({
                 where: {
-                    UserId: user[0].id
+                    authId: attribute.userAuthId
                 }
-            }).then(function(wishlist) {
-                wishlist[0].createItem({
-                    name: attribute.itemName,
-                    best_price: attribute.itemPrice,
-                    source_url: attribute.itemUrl,
-                    img_url: attribute.itemImgUrl
-                }).then(function() {
-                    console.log("item added");
-                    res.end();
+
+            }).then(function(user) {
+                // console.log("Return of first search: ", user);
+                // console.log("user id index 0: ", user[0].id);
+
+
+                db.Wishlist.findAll({
+                    where: {
+                        UserId: user[0].id
+                    }
+                }).then(function(wishlist) {
+                    wishlist[0].createItem({
+                        name: attribute.itemName,
+                        best_price: attribute.itemPrice,
+                        source_url: attribute.itemUrl,
+                        img_url: attribute.itemImgUrl
+                    }).then(function() {
+                        console.log("item added");
+                        res.end();
+                    });
                 });
             });
         });

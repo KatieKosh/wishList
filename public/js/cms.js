@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Getting jQuery references to the post body, title, form, and author select
     var listInput = $("#list");
     var titleInput = $("#listTitle");
@@ -46,22 +46,67 @@ $(document).ready(function() {
         };
 
         submitPost(userList);
+        // submitList(userList.list);
         console.log("working");
     }
 
     // Submits a new post and brings user to blog page upon completion
     // Check promise usage here. 
+    // function submitPost(userList) {
+    //     $.post("/api/cms", userList, function() {
+
+    //         // API EBAY call, will respond w/ json
+    //     }).then(function(ebayarray){
+    //         $.post("/api/items", ebayarray, function () {
+    //             // adding data to db
+    //             // when done..
+    //         }).done(function(){
+    //             // window.location.href = "/posts";
+    //         });
+    //     });
+    // }
+
     function submitPost(userList) {
-        $.post("/api/cms", userList, function() {
-            // window.location.href = "/posts";
-            // API EBAY call, will respond w/ json
-        }).then(function(ebayarray){
-            $.post("/api/items", ebayarray, function () {
-                // adding data to db
-                // when done..
-            }).done(function(){
-                // window.location.href = "/posts";
+        // On submit, adds user information
+        // THen call ebay API
+        $.post("/api/cms", userList).done(function () {
+            console.log("User and WL init in DB");
+        }).done(function () {
+            // Ebay API call.
+            console.log("Post req to Ebay API");
+            var requestBody = { wList: userList.list };
+            $.post("/api/ebay", requestBody).done(function (sortedArray) {
+                // Call to insert items into database.
+                console.log("Return from Ebay API: ", sortedArray);
+                sortedArray.forEach(function(item){
+                    $.post("/api/items", item).done(function(){
+                        console.log("item added!");
+                    });
+                });
+                console.log("done with API call and upload, switching pages...");
             });
         });
     }
+
 });
+
+/*
+[
+{
+"name": "Apple iPhone 4s - 16GB - Black (Verizon) Smartphone with LifeProof",
+"salePrice": 56,
+"productUrl": "http://www.ebay.com/itm/Apple-iPhone-4s-16GB-Black-Verizon-Smartphone-LifeProof-/162506382821"
+},
+{
+"name": "Easton Mako Power Brigade pro grade Ash wood baseball bat 33/30",
+"salePrice": 29,
+"productUrl": "http://www.ebay.com/itm/Easton-Mako-Power-Brigade-pro-grade-Ash-wood-baseball-bat-33-30-/382037781498"
+},
+{
+"name": "Xbox One 500 gb Console Powers On But No Picture For Parts",
+"salePrice": 72,
+"productUrl": "http://www.ebay.com/itm/Xbox-One-500-gb-Console-Powers-But-No-Picture-Parts-/152542049102"
+}
+]
+*/
+
