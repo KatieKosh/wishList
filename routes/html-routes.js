@@ -8,7 +8,7 @@ var passport = require('passport');
 var env = {
     AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
     AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
-    AUTH0_CALLBACK_URL: 'http://localhost:8080/callback'
+    AUTH0_CALLBACK_URL: 'https://ancient-citadel-52749.herokuapp.com/callback'
 };
 
 
@@ -19,6 +19,7 @@ module.exports = function(app) {
     app.get('/callback',
         passport.authenticate('auth0', { failureRedirect: '/' }),
         function(req, res) {
+            var authID = req.user.id;
             res.redirect(req.session.returnTo || '/cms');
         });
 
@@ -32,6 +33,30 @@ module.exports = function(app) {
         req.logout();
         res.redirect('/');
     });
+
+    app.get('/email', function(req, res) {
+        var apiKey = process.env.MJ_APIKEY_PUBLIC,
+        apiSecret = process.env.MJ_APIKEY_PRIVATE;
+
+        var Mailjet = require('node-mailjet').connect(apiKey, apiSecret);
+
+
+        var sendEmail = Mailjet.post('send');
+
+        var emailData = {
+            'FromEmail': 'zazador@gmail.com',
+            'FromName': 'My Name',
+            'Subject': 'Test with the NodeJS Mailjet wrapper',
+            'Text-part': 'Hello NodeJs !',
+            'Recipients': [{'Email': 'zazador@gmail.com'}],
+        }
+
+        sendEmail
+        .request(emailData)
+        .then()
+        .catch();
+        res.redirect('/final');
+    })
 
     // index route loads index.html
 

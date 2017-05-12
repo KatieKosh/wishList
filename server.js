@@ -28,10 +28,10 @@ var db = require("./models");
 
 // This will configure Passport to use Auth0
 var strategy = new Auth0Strategy({
-    domain: process.env.AUTH0_DOMAIN,
-    clientID: process.env.AUTH0_CLIENT_ID,
-    clientSecret: process.env.AUTH0_CLIENT_SECRET,
-    callbackURL: 'http://localhost:8080/callback'
+	domain: process.env.AUTH0_DOMAIN,
+	clientID: process.env.AUTH0_CLIENT_ID,
+	clientSecret: process.env.AUTH0_CLIENT_SECRET,
+	callbackURL: 'http://localhost:8080/callback'
 }, function(accessToken, refreshToken, extraParams, profile, done) {
     // profile has all the information from the user
     return done(null, profile);
@@ -42,18 +42,26 @@ passport.use(strategy);
 
 // The searlize and deserialize user methods will allow us to get the user data once they are logged in.
 passport.serializeUser(function(user, done) {
-    done(null, user);
+	done(null, user);
 });
 
 passport.deserializeUser(function(user, done) {
-    done(null, user);
+	done(null, user);
 });
+
+app.use(cookieParser());
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+app.use(session({
+	secret:"shhhh",
+	resave:true,
+	saveUninitialized: true
+}));
 
 // Static directory
 app.use(passport.initialize());
@@ -69,11 +77,28 @@ require("./routes/list-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our express app
 
+
+
+
 db.sequelize.sync({force: false}).then(function() {
-    app.listen(PORT, function() {
-        console.log("App listening on PORT " + PORT);
-    });
+	app.listen(PORT, function() {
+		console.log("App listening on PORT " + PORT);
+	});
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Here is working code to send emails... oh boy!
 
