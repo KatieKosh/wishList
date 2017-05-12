@@ -2,6 +2,8 @@
 var db = require("../models");
 var ebayApi = require("../helpers/ebay.js");
 var walmartApi = require("../helpers/walmart.js");
+var passport = require('passport');
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 
 // Helper functions: Turn Email comma lists into array of json-like objects to pass into Sequelize
 // Expects string of emails, separated by commas
@@ -24,9 +26,9 @@ module.exports = function(app) {
 
     // Retrieve session user's contact list
     // Currently using a post to carry a body for authentication. We can use a get if we have a way to identify the current session user.
-    app.post("/api/emails", function (req, res) {
+    app.post("/api/emails", ensureLoggedIn, function (req, res) {
         // Tentative authentication
-        var authId = req.body.authId;
+        var authId = req.user.id;
 
         db.User.findAll({
             where: {authId: authId},
@@ -42,9 +44,9 @@ module.exports = function(app) {
     });
 
     // Route to return all items as json.
-    app.post("/api/useritems", function(req, res) {
+    app.post("/api/useritems", ensureLoggedIn, function(req, res) {
         // Change as necessary
-        var authId = req.body.authId;
+        var authId = req.user.id;
 
         db.User.findAll({
             where: {
@@ -63,13 +65,12 @@ module.exports = function(app) {
 
     // Initial Creation Route. Create rows from user input.S
     // Change pointer as neccessary.
-    app.post("/api/cms", function(req, res) {
+    app.post("/api/cms", ensureLoggedIn, function(req, res) {
         console.log("post-api-routes req.body: " + req.body);
         // Repackage request body for readability
         var attribute = {
             userName: req.body.name,
-
-            userAuthId: req.body.authId,
+            userAuthId: req.user.id,
             wishlistTitle: req.body.title,
             wishlistCategory: req.body.category,
             rawEmails: req.body.emails,
@@ -80,11 +81,11 @@ module.exports = function(app) {
 
         // Create user row, assign unique authO ID
         db.User.create({
-                authId: attribute.userAuthId,
-                name: attribute.userName
-            }
+            authId: attribute.userAuthId,
+            name: attribute.userName
+        }
             // After user row created...
-        ).then(function(user) {
+            ).then(function(user) {
                 // Create and associate co  ntact list.
                 // Create and associate contacts to contacts list.
                 user.createContactlist({}).then(function(contactlist) {
@@ -101,7 +102,7 @@ module.exports = function(app) {
                 });
             }
             // Send list to API's
-        ).then(function() {
+            ).then(function() {
             // send req.body.list to API
             console.log("API: " + attribute.wishListItem);
 
@@ -112,7 +113,7 @@ module.exports = function(app) {
     });
 
     // Item adding route
-    app.post("/api/items", function(req, res) {
+    app.post("/api/items", ensureLoggedIn, function(req, res) {
         // Repackage names for readability.
         var attribute = {
             userAuthId: req.user.id,
