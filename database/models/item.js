@@ -2,7 +2,7 @@
 // Item Model
 //
 
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
     var Item = sequelize.define("Item", {
         name: {
             type: DataTypes.STRING,
@@ -34,15 +34,14 @@ module.exports = function (sequelize, DataTypes) {
             validate: {}
             // Insert Validation
         }
-    },
-        {
-            // ASSOCIATIONS
-            classMethods: {
-                associate: function (models) {
-                    Item.belongsToMany(models.Wishlist, { through: "ItemsInWishlists" });
-                }
+    }, {
+        // ASSOCIATIONS
+        classMethods: {
+            associate: function(models) {
+                Item.belongsToMany(models.Wishlist, { through: "ItemsInWishlists" });
             }
-        }); // END COLUMNS DEFINE
+        }
+    }); // END COLUMNS DEFINE
     // END TABLE DEFINE
     return Item;
 };

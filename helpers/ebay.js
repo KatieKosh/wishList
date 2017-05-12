@@ -22,7 +22,8 @@ var ebayApi = function(wList, cb) {
                         ebayArray.push({
                             "name": JSON.parse(body).findItemsByKeywordsResponse[0].searchResult[0].item[i].title[0],
                             "salePrice": parseInt(JSON.parse(body).findItemsByKeywordsResponse[0].searchResult[0].item[i].sellingStatus[0].currentPrice[0].__value__),
-                            "productUrl": JSON.parse(body).findItemsByKeywordsResponse[0].searchResult[0].item[i].viewItemURL[0]
+                            "productUrl": JSON.parse(body).findItemsByKeywordsResponse[0].searchResult[0].item[i].viewItemURL[0],
+                            "productImg": JSON.parse(body).findItemsByKeywordsResponse[0].searchResult[0].item[i].galleryURL[0]
                         });
                     }
                 }
@@ -31,6 +32,7 @@ var ebayApi = function(wList, cb) {
                 console.log(ebaySorted[0].name);
                 console.log(ebaySorted[0].salePrice);
                 console.log(ebaySorted[0].productUrl);
+                console.log(ebaySorted[0].productImg);
                 resolve(ebaySorted[0]);
             });
         });

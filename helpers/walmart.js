@@ -21,7 +21,8 @@ var walmartApi = function(wlist, cb) {
                         walmartArray.push({
                             "name": JSON.parse(body).items[i].name,
                             "salePrice": parseInt(JSON.parse(body).items[i].salePrice),
-                            "productUrl": JSON.parse(body).items[i].productUrl
+                            "productUrl": JSON.parse(body).items[i].productUrl,
+                            "productImg": JSON.parse(body).items[i].thumbnailImage
                         });
                     }
                 }
@@ -30,6 +31,7 @@ var walmartApi = function(wlist, cb) {
                 console.log(walmartSorted[0].name);
                 console.log(walmartSorted[0].salePrice);
                 console.log(walmartSorted[0].productUrl);
+                console.log(walmartSorted[0] / productImg);
                 resolve(walmartSorted[0]);
             });
         });

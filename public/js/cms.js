@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
     // Getting jQuery references to the post body, title, form, and author select
     var listInput = $("#list");
     var titleInput = $("#listTitle");
@@ -51,17 +51,17 @@ $(document).ready(function () {
     }
 
     function submitPost(userList) {
-        $.post("/api/cms", userList).done(function(){
-            var requestBody = {wList: userList.list};
-            $.post("/api/ebay", requestBody).done(function (sortedArray){
+        $.post("/api/cms", userList).done(function() {
+            var requestBody = { wList: userList.list };
+            $.post("/api/ebay", requestBody).done(function(sortedArray) {
                 for (var i = 0; i < sortedArray.length; i++) {
                     if (i != (sortedArray.length - 1)) {
-                        $.post("/api/items", sortedArray[i]).done(function(){
+                        $.post("/api/items", sortedArray[i]).done(function() {
                             // console.log("item added!");
                         });
                     } else {
                         // If its the last item to add....
-                        $.post("/api/items", sortedArray[i]).done(function(){
+                        $.post("/api/items", sortedArray[i]).done(function() {
                             // console.log("item added! - Switching Pages...");
                             // Change this to change redirect.
                             window.location.href = "/db-test";
@@ -115,4 +115,3 @@ $(document).ready(function () {
 }
 ]
 */
-
