@@ -63,7 +63,8 @@ $(document).ready(function () {
                         // If its the last item to add....
                         $.post("/api/items", sortedArray[i]).done(function(){
                             // console.log("item added! - Switching Pages...");
-                            window.location.href = "/posts";
+                            // Change this to change redirect.
+                            window.location.href = "/db-test";
                         });
                     }
                 }
