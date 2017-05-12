@@ -47,46 +47,51 @@ $(document).ready(function () {
 
         submitPost(userList);
         // submitList(userList.list);
-        console.log("working");
+        // console.log("working");
     }
 
-    // Submits a new post and brings user to blog page upon completion
-    // Check promise usage here. 
-    // function submitPost(userList) {
-    //     $.post("/api/cms", userList, function() {
-
-    //         // API EBAY call, will respond w/ json
-    //     }).then(function(ebayarray){
-    //         $.post("/api/items", ebayarray, function () {
-    //             // adding data to db
-    //             // when done..
-    //         }).done(function(){
-    //             // window.location.href = "/posts";
-    //         });
-    //     });
-    // }
-
     function submitPost(userList) {
-        // On submit, adds user information
-        // THen call ebay API
-        $.post("/api/cms", userList).done(function () {
-            console.log("User and WL init in DB");
-        }).done(function () {
-            // Ebay API call.
-            console.log("Post req to Ebay API");
-            var requestBody = { wList: userList.list };
-            $.post("/api/ebay", requestBody).done(function (sortedArray) {
-                // Call to insert items into database.
-                console.log("Return from Ebay API: ", sortedArray);
-                sortedArray.forEach(function(item){
-                    $.post("/api/items", item).done(function(){
-                        console.log("item added!");
-                    });
-                });
-                console.log("done with API call and upload, switching pages...");
+        $.post("/api/cms", userList).done(function(){
+            var requestBody = {wList: userList.list};
+            $.post("/api/ebay", requestBody).done(function (sortedArray){
+                for (var i = 0; i < sortedArray.length; i++) {
+                    if (i != (sortedArray.length - 1)) {
+                        $.post("/api/items", sortedArray[i]).done(function(){
+                            // console.log("item added!");
+                        });
+                    } else {
+                        // If its the last item to add....
+                        $.post("/api/items", sortedArray[i]).done(function(){
+                            // console.log("item added! - Switching Pages...");
+                            window.location.href = "/posts";
+                        });
+                    }
+                }
             });
         });
     }
+    // done(function(){console.log("nextpage")})
+    // function submitPost(userList) {
+    //     // On submit, adds user information
+    //     // Then call ebay API
+    //     $.post("/api/cms", userList).done(function () {
+    //         console.log("User and WL init in DB");
+    //     }).done(function () {
+    //         // Ebay API call.
+    //         console.log("Post req to Ebay API");
+    //         var requestBody = { wList: userList.list };
+    //         console.log("requestBody ", requestBody);
+    //         $.post("/api/ebay", requestBody).done(function (sortedArray) {
+    //             // Call to insert items into database.
+    //             console.log("Return from Ebay API: ", sortedArray);
+    //             sortedArray.forEach(function (item) {
+    //                 $.post("/api/items", item).done(function () {
+    //                     console.log("item added!");
+    //                 });
+    //             });
+    //         });
+    //     });
+    // }
 
 });
 
