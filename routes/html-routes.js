@@ -35,21 +35,24 @@ module.exports = function(app) {
         res.redirect('/');
     });
 
-    app.get('/email', function(req, res) {
+    app.post('/email', function(req, res) {
         var apiKey = process.env.MJ_APIKEY_PUBLIC,
         apiSecret = process.env.MJ_APIKEY_PRIVATE;
 
         var Mailjet = require('node-mailjet').connect(apiKey, apiSecret);
+
+        var recipients = req.body.recipients;
+        var textPart = req.body.textPart;
 
 
         var sendEmail = Mailjet.post('send');
 
         var emailData = {
             'FromEmail': 'zazador@gmail.com',
-            'FromName': 'My Name',
-            'Subject': 'Test with the NodeJS Mailjet wrapper',
-            'Text-part': 'Hello NodeJs !',
-            'Recipients': [{'Email': 'zazador@gmail.com'}],
+            'FromName': 'Wishlist App!',
+            'Subject': 'Someone sent you a wishlist! :)',
+            'Html-part': textPart,
+            'Recipients': recipients,
         }
 
         sendEmail
